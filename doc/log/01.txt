@@ -1,0 +1,19 @@
+2024.09.03.
+
+Téma név ötlet: Nyílt forráskódú okosotthon rendszer integrálása
+
+Szakdolgozat portál
+diplomaterv vik bme
+
+
+Tartalomjegyzék
+Teams-en kommunikácó
+Nincs fix heti időpont
+Angol - kell majd cím és absztrakt
+Plágiumellenőrzésnél jobban flaggel
+
+Következő alkalomra:
+- Git repora meghívni Robit
+- Dip oldalak átnézése
+- HomeAssistant keresés
+
