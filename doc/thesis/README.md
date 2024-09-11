@@ -1,0 +1,3 @@
+- https://medium.com/@timju/latex-setup-with-vs-code-and-docker-612f998e1f23
+- https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#the-root-file
+- https://gitlab.com/islandoftex/images/texlive
