@@ -1,0 +1,7 @@
+feladatok:
+- mi legyen a pontos angol, magyar cím
+- nodemcu integrálás: esphome
+- schulcz.robert@vik.bme.hu hozzáadás
+- homeassistant mélyebben
+- feladatkiírás
+- források gyűjtése
