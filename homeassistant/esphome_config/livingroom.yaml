@@ -1,0 +1,45 @@
+esphome:
+  name: livingroom
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "comfybed2024"
+
+ota:
+  - platform: esphome
+    password: "comfybed2024"
+
+wifi:
+  ssid: "esp_smart_home"
+  password: "rubberduck_soup_#^24"
+  fast_connect: true
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Livingroom Fallback Hotspot"
+    password: "xW5Aq6nxwwlj"
+
+  manual_ip:
+    static_ip: 192.168.1.50
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+
+captive_portal:
+
+# https://community.home-assistant.io/t/how-do-you-manually-control-the-onboard-blue-led-for-esp32/209399/20
+switch:
+  - platform: gpio
+    id: blue_led
+    pin:
+      number: GPIO2
+      mode: OUTPUT
+    name: "Blue LED"  
+    restore_mode: ALWAYS_OFF
