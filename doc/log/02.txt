@@ -1,6 +1,6 @@
 feladatok:
 - mi legyen a pontos angol, magyar cím
-- - Nyílt forráskódú okosotthon rendszer integrálása fizikai modellbe
+- - Nyílt forráskódú okosotthon szoftver integrálása fizikai modellbe
 - - Integrating open-source smart home software into a physical model
 - nodemcu integrálás: esphome
 - - https://web.esphome.io/ nodemcu flashing

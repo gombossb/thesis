@@ -1,0 +1,18 @@
+Nyílt forráskódú okosotthon szoftver integrálása fizikai modellbe
+
+A számítógépekkel vezérelt ipari rendszerek után az otthoni környezetben is felmerült ezeknek használata az otthonok energiatakarékosabbá és komfortosabbá tételéhez. Az ilyen rendszerekben a felhasználók a ház különböző rendszereit (pl. világítás, hűtés-fűtés, redőnyök) egy központosított felhasználói felületről vezérelhetik. A hallgató ezen témában egy ilyen okosotthon rendszer demo modell fejlesztésében és felhasználásában szerez tapasztalatot.
+
+- Mutassa be egy általános okosotthon rendszer felépítését
+- Vizsgálja meg a már elérhető nyílt forráskódú elérhető megoldásokat
+- Készítsen egy modellt 
+- TODO
+- Értékelje az eredményeket
+- Tegyen javaslatot a további fejlesztési lehetõségekre vonatkozóan
+
+-------------
+
+Integrating open-source smart home software into a physical model
+
+After the usage of computer controlled systems in industrial installations, a demand for them appeared in home enviroments too, in order to make homes more energy efficient and more comfortable to use. With these systems, users can control different parts of a house (eg. lighting, cooling-heating, shutters) from a centralized user interface. The student can gain experience in the development and usage of such a smart home model demo.
+
+- 
