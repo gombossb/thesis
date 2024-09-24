@@ -1,11 +1,13 @@
 Nyílt forráskódú okosotthon szoftver integrálása fizikai modellbe
 
-A számítógépekkel vezérelt ipari rendszerek után az otthoni környezetben is felmerült ezeknek használata az otthonok energiatakarékosabbá és komfortosabbá tételéhez. Az ilyen rendszerekben a felhasználók a ház különböző rendszereit (pl. világítás, hűtés-fűtés, redőnyök) egy központosított felhasználói felületről vezérelhetik. A hallgató ezen témában egy ilyen okosotthon rendszer demo modell fejlesztésében és felhasználásában szerez tapasztalatot.
+A számítógépekkel vezérelt ipari rendszerek után az otthoni környezetben is felmerült ezeknek használata az otthonok energiatakarékosabbá és komfortosabbá tételéhez. Az ilyen rendszerekben a felhasználók a ház különböző rendszereit (pl. világítás, hűtés-fűtés, redőnyök) egy központosított felhasználói felületről vezérelhetik. A hallgató ezen témában egy ilyen okosotthon rendszer demo modell fejlesztésében és felhasználásában vesz részt, szerez tapasztalatot.
 
+- Kutassa az okosotthonokban használt fő technológiai megoldásokat, a nyílt forráskódúakat előtérbe helyezve
 - Mutassa be egy általános okosotthon rendszer felépítését
-- Vizsgálja meg a már elérhető nyílt forráskódú elérhető megoldásokat
-- Készítsen egy modellt 
-- TODO
+- Válasszon ki szoftveres és hardveres környezetet, indokolja a választást
+- Tevezzen és készítsen egy fizikai demo modellt ezek felhasználával
+- Készítsen számítógépről és okostelefonról irányítható felhasználói felületet a demo modellhez
+- Vizsgálja ezek felhasználási lehetőségeit és dokumentálja tapasztalatait
 - Értékelje az eredményeket
 - Tegyen javaslatot a további fejlesztési lehetõségekre vonatkozóan
 
@@ -13,6 +15,13 @@ A számítógépekkel vezérelt ipari rendszerek után az otthoni környezetben 
 
 Integrating open-source smart home software into a physical model
 
-After the usage of computer controlled systems in industrial installations, a demand for them appeared in home enviroments too, in order to make homes more energy efficient and more comfortable to use. With these systems, users can control different parts of a house (eg. lighting, cooling-heating, shutters) from a centralized user interface. The student can gain experience in the development and usage of such a smart home model demo.
+After the usage of computer controlled systems in industrial installations, a demand for them appeared in home enviroments too, in order to make homes more energy efficient and more comfortable to use. With these systems, users can control different parts of a house (eg. lighting, cooling-heating, shutters) from a centralized user interface. The student can take part and gain experience in the development and usage of such a smart home model demo.
 
-- 
+- Research the most important smart home technology solutions, especially open source ones
+- Present the structure of a typical smart home system
+- Choose a software and hardware environment and justify the choices
+- Design and make a physical demo model using these
+- Create a user interface controllable from a computer and smartphone in order to control the demo model
+- Examine the use cases of these and document the gained experiences
+- Evaluate the results
+- Make suggestions on opportunities for future development
