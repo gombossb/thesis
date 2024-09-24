@@ -1,7 +1,7 @@
 services:
   homeassistant:
     container_name: homeassistant
-    image: "ghcr.io/home-assistant/home-assistant:stable"
+    image: "ghcr.io/home-assistant/home-assistant:2024.9.2"
     volumes:
       - ./config:/config
       - /etc/localtime:/etc/localtime:ro
@@ -11,3 +11,15 @@ services:
     # network_mode: host
     ports:
       - 8123:8123
+#  esphome:
+#    container_name: esphome
+#    image: ghcr.io/esphome/esphome:2024.9.0
+#    volumes:
+#      - ./esphome_config:/config
+#      - /etc/localtime:/etc/localtime:ro
+#    restart: always
+#    privileged: true
+#    network_mode: host
+#    environment:
+#      - USERNAME=esphome
+#      - PASSWORD=opensource
