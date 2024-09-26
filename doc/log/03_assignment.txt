@@ -15,7 +15,7 @@ A számítógépekkel vezérelt ipari rendszerek után az otthoni környezetben 
 
 Integrating open-source smart home software into a physical model
 
-After the usage of computer controlled systems in industrial installations, a demand for them appeared in home enviroments too, in order to make homes more energy efficient and more comfortable to use. With these systems, users can control different parts of a house (eg. lighting, cooling-heating, shutters) from a centralized user interface. The student can take part and gain experience in the development and usage of such a smart home model demo.
+After the usage of computer controlled systems in industrial installations, a demand for them appeared in home enviroments too, in order to make homes more energy efficient and more comfortable to use. With these systems, users can control different parts of a house (eg. lighting, cooling-heating, shutters) from a central user interface. The student can take part and gain experience in the development and usage of such a smart home model demo.
 
 - Research the most important smart home technology solutions, especially open source ones
 - Present the structure of a typical smart home system

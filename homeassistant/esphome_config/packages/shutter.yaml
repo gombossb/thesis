@@ -1,0 +1,136 @@
+# https://community.home-assistant.io/t/servo-motor-wont-work-in-esphome/429297/3
+api:
+  services:
+   - service: control_servo
+     variables:
+       level: float
+     then:
+       - servo.write:
+           id: servo_control
+           level: !lambda 'return level / 100.0;'
+       - sensor.template.publish:
+           id: servo_sensor
+           state: !lambda 'return (float)level;'
+
+#Output Platform
+output:
+  - platform: ledc
+    id: pwm_output
+    pin: GPIO22
+    frequency: 50 Hz
+
+#Configuration variables: Output (required, ID): ID of the output component to be used for this servo
+servo:
+  - id: servo_control
+    output: pwm_output
+    auto_detach_time: 0s
+    transition_length: 1s
+
+#Sensors
+sensor:
+#WiFi Signal Sensor
+  # - platform: wifi_signal
+  #   name: gateway wifi signal
+  #   update_interval: 30s
+  #   unit_of_measurement: "dBa"
+  #   accuracy_decimals: 0
+
+#Servomotor position sensor
+  - platform: template
+    name: servo sensor position
+    id: servo_sensor
+    on_value:
+      then:
+        - script.execute: script_servo
+
+switch:
+#Servo switch with start and end position
+  - platform: template
+    id: servo_control_switch
+    name: servo start/end
+    icon: mdi:bathtub
+    # restore_state: true
+    turn_on_action:
+      - sensor.template.publish:
+          id: servo_sensor
+          state: !lambda 'return id(servo_start).state;'
+      - switch.template.publish:
+         id: servo_control_switch
+         state: true
+      - servo.write:
+         id: servo_control
+         level: !lambda 'return (id(servo_start).state/100);'
+    turn_off_action:
+      - sensor.template.publish:
+          id: servo_sensor
+          state: !lambda 'return id(servo_stop).state;'
+      - switch.template.publish:
+         id: servo_control_switch
+         state: false
+      - servo.write:
+         id: servo_control
+         level: !lambda 'return (id(servo_stop).state/100);'
+
+
+#Script servo script
+script:
+  - id: script_servo
+    then:
+      - if:
+          condition:
+            - lambda: 'return id(servo_sensor).state == id(servo_start).state;'
+          then:
+            - sensor.template.publish:
+               id: servo_sensor
+               state: !lambda 'return (id(servo_start).state/100);'
+            - switch.turn_on: servo_control_switch
+      - if:
+          condition:
+            and:
+              - lambda: 'return id(servo_sensor).state == id(servo_stop).state;'
+          then:
+            - sensor.template.publish:
+               id: servo_sensor
+               state: !lambda 'return id(servo_stop).state;'
+            - switch.turn_off: servo_control_switch
+
+#Adding a slider to control the servo
+number:
+  - platform: template
+    name: servo position
+    min_value: -100
+    max_value: 100
+    update_interval: 5s 
+    mode: slider #slider/box
+    lambda: 'return id(servo_sensor).state;' 
+    step: 1
+    set_action:
+      then:
+        - servo.write:
+           id: servo_control
+           level: !lambda 'return x / 100.0;'
+        - sensor.template.publish:
+           id: servo_sensor
+           state: !lambda 'return x;'
+
+#Specify the initial position of the servo
+  - platform: template
+    name: servo start position
+    id: servo_start
+    min_value: -100
+    max_value: 100
+    mode: box #slider/box
+    step: 1
+    optimistic: true
+    # restore_value: true
+ 
+#Specify the final position of the servo
+  - platform: template
+    name: servo end position
+    id: servo_stop
+    min_value: -100
+    max_value: 100
+    mode: box #slider/box
+    step: 1
+    optimistic: true
+    # restore_value: true

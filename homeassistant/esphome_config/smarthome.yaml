@@ -1,5 +1,5 @@
 esphome:
-  name: livingroom
+  name: smarthome
 
 esp32:
   board: nodemcu-32s
@@ -24,7 +24,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Livingroom Fallback Hotspot"
+    ssid: "SmartHome Fallback Hotspot"
     password: "xW5Aq6nxwwlj"
 
   manual_ip:
@@ -34,12 +34,6 @@ wifi:
 
 captive_portal:
 
-# https://community.home-assistant.io/t/how-do-you-manually-control-the-onboard-blue-led-for-esp32/209399/20
-switch:
-  - platform: gpio
-    id: blue_led
-    pin:
-      number: GPIO2
-      mode: OUTPUT
-    name: "Blue LED"  
-    restore_mode: ALWAYS_OFF
+packages:
+  leds: !include packages/leds.yaml
+  shutter: !include packages/shutter.yaml

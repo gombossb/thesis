@@ -1,0 +1,37 @@
+switch:
+  # https://community.home-assistant.io/t/how-do-you-manually-control-the-onboard-blue-led-for-esp32/209399/20
+  # - platform: gpio
+  #   id: onboard_led
+  #   pin:
+  #     number: GPIO2
+  #     mode: OUTPUT
+  #   name: "Onboard LED"  
+  #   restore_mode: ALWAYS_OFF
+  - platform: gpio
+    id: bedroom_led
+    pin:
+      number: GPIO21
+      mode: OUTPUT
+    name: "BedroomLED"
+    restore_mode: ALWAYS_OFF
+  - platform: gpio
+    id: living_room_led
+    pin:
+      number: GPIO19
+      mode: OUTPUT
+    name: "LivingRoomLED"
+    restore_mode: ALWAYS_OFF
+  - platform: gpio
+    id: main_hall_led
+    pin:
+      number: GPIO18
+      mode: OUTPUT
+    name: "MainHallLED"
+    restore_mode: ALWAYS_OFF
+  - platform: gpio
+    id: car_charging_led
+    pin:
+      number: GPIO23      
+      mode: OUTPUT
+    name: "CarCharginLED"
+    restore_mode: ALWAYS_OFF

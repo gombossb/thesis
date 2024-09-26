@@ -8,5 +8,5 @@ docker compose up [-d]
 
 ## Compile and upload
 ```
-docker run --rm -v "./esphome_config":/config -it ghcr.io/esphome/esphome:2024.9.0 run livingroom.yaml
+docker run --rm -v "./esphome_config":/config -it ghcr.io/esphome/esphome:2024.9.0 run smarthome.yaml
 ```
