@@ -33,5 +33,5 @@ switch:
     pin:
       number: GPIO23      
       mode: OUTPUT
-    name: "CarCharginLED"
+    name: "CarChargingLED"
     restore_mode: ALWAYS_OFF

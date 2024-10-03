@@ -1,0 +1,8 @@
+# https://esphome.io/components/sensor/adc.html
+
+sensor:
+  - platform: adc
+    pin: GPIO35
+    id: brightness_ldr
+    name: "Brightness Sensor"
+    update_interval: 1s

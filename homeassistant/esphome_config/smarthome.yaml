@@ -35,5 +35,9 @@ wifi:
 captive_portal:
 
 packages:
+  fans: !include packages/fans.yaml
+  ldr: !include packages/ldr.yaml
   leds: !include packages/leds.yaml
+  peltier: !include packages/peltier.yaml
   shutter: !include packages/shutter.yaml
+  tempsensors: !include packages/tempsensors.yaml
