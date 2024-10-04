@@ -10,7 +10,7 @@ sensor:
     name: "Living Room Temperature"
     update_interval: 1s
   - platform: adc
-    pin: GPIO33
+    pin: GPIO34
     id: temp_mainhall
     name: "Main Hall Temperature"
     update_interval: 1s
