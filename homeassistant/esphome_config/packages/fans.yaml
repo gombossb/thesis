@@ -12,11 +12,13 @@ output:
 fan:
   - platform: speed
     output: gpio_fan1
+    id: fan_1
     name: "Fan 1"
     speed_count: 100
     restore_mode: "RESTORE_DEFAULT_OFF"
   - platform: speed
     output: gpio_fan2
+    id: fan_2
     name: "Fan 2"
     restore_mode: "RESTORE_DEFAULT_OFF"
     speed_count: 100

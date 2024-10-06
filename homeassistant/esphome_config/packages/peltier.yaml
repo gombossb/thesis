@@ -1,0 +1,4 @@
+output:
+  - platform: ledc
+    pin: GPIO25
+    id: gpio_peltier_heating

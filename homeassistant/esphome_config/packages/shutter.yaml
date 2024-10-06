@@ -42,6 +42,7 @@ sensor:
     on_value:
       then:
         - script.execute: script_servo
+    disabled_by_default: true
 
 switch:
 #Servo switch with start and end position
@@ -70,6 +71,7 @@ switch:
       - servo.write:
          id: servo_control
          level: !lambda 'return (id(servo_stop).state/100);'
+    disabled_by_default: true
 
 
 #Script servo script

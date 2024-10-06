@@ -6,3 +6,4 @@ sensor:
     id: brightness_ldr
     name: "Brightness Sensor"
     update_interval: 1s
+    attenuation: auto
