@@ -1,16 +1,37 @@
+# https://esphome.io/components/sensor/internal_temperature.html
+# https://community.home-assistant.io/t/thermistor-reading-analog-input/549865/2
+
 sensor:
+  - platform: internal_temperature
+    id: internal_temperature_sensor
+    name: "Internal Temperature"
   - platform: adc
     pin: GPIO36
     id: temp_bedroom
     name: "Bedroom Temperature"
-    update_interval: 1s
+    update_interval: 3s
+    attenuation: auto
+    accuracy_decimals: 0
+    filters:
+      - lambda: return (x / .01) - 273.15;
+    unit_of_measurement: "°C"
   - platform: adc
     pin: GPIO39
     id: temp_livingroom
     name: "Living Room Temperature"
-    update_interval: 1s
+    update_interval: 3s
+    attenuation: auto
+    accuracy_decimals: 0
+    filters:
+      - lambda: return (x / .01) - 273.15;
+    unit_of_measurement: "°C"
   - platform: adc
     pin: GPIO34
     id: temp_mainhall
     name: "Main Hall Temperature"
-    update_interval: 1s
+    update_interval: 3s
+    attenuation: auto
+    accuracy_decimals: 0
+    filters:
+      - lambda: return (x / .01) - 273.15;
+    unit_of_measurement: "°C"
