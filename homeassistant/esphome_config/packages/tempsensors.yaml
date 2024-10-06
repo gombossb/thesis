@@ -15,6 +15,7 @@ sensor:
     filters:
       - lambda: return (x / .01) - 273.15;
     unit_of_measurement: "°C"
+    icon: "mdi:thermometer-high"
   - platform: adc
     pin: GPIO39
     id: temp_livingroom
@@ -25,6 +26,7 @@ sensor:
     filters:
       - lambda: return (x / .01) - 273.15;
     unit_of_measurement: "°C"
+    icon: "mdi:thermometer-high"
   - platform: adc
     pin: GPIO34
     id: temp_mainhall
@@ -35,3 +37,4 @@ sensor:
     filters:
       - lambda: return (x / .01) - 273.15;
     unit_of_measurement: "°C"
+    icon: "mdi:thermometer-high"

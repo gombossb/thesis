@@ -6,4 +6,10 @@ sensor:
     id: brightness_ldr
     name: "Brightness Sensor"
     update_interval: 1s
-    attenuation: auto
+    attenuation: 12db
+    raw: true
+    icon: "mdi:brightness-6"
+    accuracy_decimals: 0
+    filters:
+      - lambda: return (x / 4095) * 100;
+    unit_of_measurement: "%"

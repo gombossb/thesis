@@ -28,13 +28,6 @@ servo:
 
 #Sensors
 sensor:
-#WiFi Signal Sensor
-  # - platform: wifi_signal
-  #   name: gateway wifi signal
-  #   update_interval: 30s
-  #   unit_of_measurement: "dBa"
-  #   accuracy_decimals: 0
-
 #Servomotor position sensor
   - platform: template
     name: servo sensor position
@@ -49,7 +42,6 @@ switch:
   - platform: template
     id: servo_control_switch
     name: servo start/end
-    icon: mdi:bathtub
     # restore_state: true
     turn_on_action:
       - sensor.template.publish:
@@ -99,10 +91,12 @@ script:
 #Adding a slider to control the servo
 number:
   - platform: template
-    name: servo position
+    id: servo_position
+    name: "Servo Position"
     min_value: -100
     max_value: 100
     update_interval: 5s 
+    icon: "mdi:window-shutter"
     mode: slider #slider/box
     lambda: 'return id(servo_sensor).state;' 
     step: 1
