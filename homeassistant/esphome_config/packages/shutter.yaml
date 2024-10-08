@@ -15,14 +15,15 @@ api:
 #Output Platform
 output:
   - platform: ledc
-    id: pwm_output
+    id: pwm_servo
     pin: GPIO22
     frequency: 50 Hz
+    channel: 0
 
 #Configuration variables: Output (required, ID): ID of the output component to be used for this servo
 servo:
   - id: servo_control
-    output: pwm_output
+    output: pwm_servo
     auto_detach_time: 0s
     transition_length: 1s
 

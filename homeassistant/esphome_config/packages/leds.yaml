@@ -28,10 +28,14 @@ switch:
       mode: OUTPUT
     name: "MainHallLED"
     restore_mode: ALWAYS_OFF
-  - platform: gpio
+
+output:
+  - platform: ledc
+    pin: GPIO23
     id: car_charging_led
-    pin:
-      number: GPIO23      
-      mode: OUTPUT
+    # frequency: 2000Hz
+    channel: 4
+light:
+  - platform: monochromatic
     name: "CarChargingLED"
-    restore_mode: ALWAYS_OFF
+    output: car_charging_led

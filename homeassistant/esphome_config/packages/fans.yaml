@@ -5,9 +5,11 @@ output:
   - platform: ledc
     pin: GPIO27
     id: gpio_fan1
+    channel: 2
   - platform: ledc
     pin: GPIO32
     id: gpio_fan2
+    channel: 3
 
 fan:
   - platform: speed

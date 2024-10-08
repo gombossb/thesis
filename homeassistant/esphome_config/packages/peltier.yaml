@@ -3,6 +3,7 @@ output:
     pin: GPIO25
     id: gpio_peltier_heating
     frequency: 50 Hz
+    channel: 1
 
 number:
 - platform: template
