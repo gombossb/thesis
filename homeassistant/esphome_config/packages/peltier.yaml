@@ -2,3 +2,18 @@ output:
   - platform: ledc
     pin: GPIO25
     id: gpio_peltier_heating
+    frequency: 50 Hz
+
+number:
+- platform: template
+  name: "Heating"
+  mode: slider  
+  min_value: 0
+  max_value: 100  
+  step: 1
+  id: number_peltier
+  optimistic: true  
+  on_value:
+    - lambda: !lambda |-
+        float pwm_value = x / 100.0;
+        id(gpio_peltier_heating).set_level(pwm_value);
