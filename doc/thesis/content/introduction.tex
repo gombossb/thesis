@@ -8,38 +8,62 @@
 
 In most conventional, "non-smart" houses or flats, utility and convenience devices (eg. lighting, heating, ventilation) are mostly controlled manually by hand via simple switches, knobs or the combination of the two, which requires people to be physically present at the scene to actuate them. In a home equipped with a smart home system, an extra computer and relay or transistor based system is added to them, which assists their actuation from centralized user interface (most often controlled on a smartphone application). Smart home systems can also be extended with digital sensors and other more fine tunable, convenience and security devices (in general just called as "smart" devices), such as temperature and humidity sensors, RGB lights, keycard readers, cameras. The sensors, along with other kinds of input (eg. time of the day, phone sensing) can be used to automate processes, which in turn would require manual interaction, such as turning on or off lights in rooms based on presence, rolling a shutter on or off at a certain time of a day. The general term for this process is called home automation, but this term also means the process of installation and usage a smart home system, so their meaning is almost identical in most contexts. \break
 
-I believe that a demonstrational "box" model is an adequate and cost-effective solution to try out the usage of smart home systems and to simulate a proper system installed in a real house. During its implementation phase, I tried to follow two basic principles: cost-effectiveness (cheap price for a thesis project) and the usage of open-source software. We can often hear these days, that companies end supporting and updating their not so old, still completely functional products, which make them vulnerable to attacks and contributes to them becoming hazardous waste. This problem can be mitigated to some extent with the usage of actively maintained open source software available to such devices, because this way they can run up-to-date software years after manufacturing, furthermore the devices chosen for the thesis project can be later repurposed in other projects.\break
+I believe that a demonstrational "box" model is an adequate and cost-effective solution to try out the usage of smart home systems and to simulate a proper system installed in a real house. During its implementation phase, I tried to follow two basic principles: cost-effectiveness (cheap price for a thesis project) and the usage of open-source software. We can often hear these days, that companies end supporting and updating their not so old, still completely functional products, which make them vulnerable to attacks and contributes to them becoming hazardous waste (take Amazon Echo Look as an example \cite{VergeAmazonEchoLook}). This problem can be mitigated to some extent with the usage of actively maintained open source software available to such devices, because this way they can run up-to-date software years after manufacturing, furthermore the devices chosen for the thesis project can be later repurposed in other projects.\break
 
-The demand for smart home system and home automation technology has been steadily increasing since their inception and there is active market potential in them (the Worldwide Economic Forum predicts it could react 13 trillion dollars by 2030). Initially, they were considered only as a convenience product (with remote control, a centralized control interface), but since then they have also become a solution of efficiency and safety. Examples for the earlier are automatized heating and motion controlled lights, for the latter are recorded security footage and its analysis, support of handicapped people.
+The demand for smart home system and home automation technology has been steadily increasing since their inception and there is active market potential in them (the Worldwide Economic Forum predicts it could react 13 trillion dollars by 2030). Initially, they were considered only as a convenience product (with remote control, a centralized control interface), but since then they have also become a solution of efficiency and safety. Examples for the earlier are automatized heating and motion controlled lights, for the latter are recorded security footage and its analysis, support of handicapped people. \cite{ChakSHS}
 % todo source
 
-% sw is just as much important as hw
-% connection to iot
+% todo sw is just as much important as hw?
+% todo connection to iot
 
-% TODO
 \section{Motivation, previous work}
 My motivation behind choosing this thesis project was mostly my previous work on the topic and also that it combines more fields of expertise: various fields in Information Technology along with basic electronics.\break
 
 For Training Project Laboratory, me and my two fellow students used an ESP-based microcontroller to control a few small electric components connected to it, which in large resembled a house's utilities. However, this was only a very rudimentary breadboard model, with continuous debug printing to the serial console and only a potentiometer and two buttons as inputs, but it was useful to familiarize ourselves with the usage and programming of a modern microcontroller liked by many hobby enthusiasts.\break
-% todo maybe pic
 
-Throughout Project Laboratory, I took the project further and made a proper shoebox smart home system model. Along with a basic floorplan for various rooms and electronic components placed in them, it featured a web-controllable user interface. Its software architecture was comprised of three main components: a JavaScript backend responsible for maintaining the components' status and communication between the microcontroller and user, microcontroller code for controlling the electronic components (reading sensor data, setting output for actuators), receiving and sending data to the backend and finally a React-based frontend to send commands and receive readings to and from the backend. \break
+Throughout Project Laboratory, I took the project further and made a proper shoebox smart home system model. Along with a basic floorplan for various rooms and electronic components placed in them, it featured a web-controllable user interface. Its software architecture was comprised of three main components: a JavaScript backend responsible for maintaining the components' status and communication between the microcontroller and user, microcontroller code for controlling the electronic components (reading sensor data, setting output for actuators), receiving and sending data to the backend and finally a React-based frontend to send commands and receive readings to and from the backend. \break\break
 %I decided to apply with it for Gadget Competition 2024 (organized by BME-MIT) and achieved 4th place on the competition.
 % todo maybe pic of box and ui
-
-For the Thesis Project, I've decided to take the shoebox model further, focus more on the software side of improvement - the hardware, electronic components inside the box have remained mostly the same. I believe that the software of my Project Laboratory project was sufficient for showcasing simple smart home use cases in a demo environment, however would have been harder to further develop to extend with more devices and features than using already existing open-source smart home software with good community support, which I had also been looking forward to try out.
+For the Thesis Project, I've decided to continue work with the shoebox model, but focus more on the software side of improvement - the hardware, electronic components inside the box have remained mostly the same. I believe that the software of my Project Laboratory project was sufficient for showcasing simple smart home use cases in a demo environment, however would have been harder to further develop to extend with more devices and features than using already existing open-source smart home software with good community support, which I had also been looking forward to try out.
 
 \section{A brief history of smart home systems}
-- precursor: control of industrial systems via electric, then electronic machines
-- first solutions
-- development of protocols (not only used for smart homes) wifi, iot, zigbee, z-wave
-- cloud, subscription world and future, why local hosting is important
+% - development of protocols (not only used for smart homes) wifi, iot, zigbee, z-wave
+% - cloud, subscription world and future, why local hosting is important
+
+The Third Industrial Revolution's main innovation was the usage of IT and computer technology in order automate certain industrial processes and achieve a substantial speed up of tasks previously done via manual labor. \cite{UpkeepIndRev}
+The apperance of Programmable Logic Controllers (PLCs) and innovation in Robotics made it easier, than ever to precisely control electric devices with a certain logic in industrial installations with much less human supervision. This aspect of computer-based electric and electronic device control is also important for the functioning of smart home systems, however the latter only started to be developed much more later, after a demand appeared for them and manufacturers started to experiment.\break %todo source
+
+The first major breakthrough, that helped the conception of the home automation field was the introduction of the X10 protocol and the devices utilizing it in the 1970s. X10 made it possible to control one lamp and one appliance via a remote control and a central control console by utilizing the house's already existing electrical wiring (on the same phase) to send commands from the control device the the appliances. Later versions of X10-based systems made it possible to control even more devices with more customization option and the platform still has some popularity among home automation enthusiasts. \cite{CavaX10} \break
+
+However it took a while, before more sophisticated home automation solutions appeared, that utilized computers for controlling the apparatus and interfacing the users.
+% The appearance of computer networking protocols, including Ethernet, TCP/IP was a leap in telecommunications, 
+After the introduction of wired computer networking protocols, suchs as Ethernet, TCP/IP, which became the basis for the World Wide Web (WWW) in the early 90s, wireless computer and home automation related communication protocols and devices also appeared, but only later in the late 90s.
+The first version of Wi-Fi was introduced in 1997 and made it possible for devices to comminicate wirelessly with a relatively high bandwidth of 2 Mbps on the 2.4Ghz ISM band. Later versions improved bandwidth and some versions utilize the 5 and 6 GHz ISM bands instead for higher bandwidth - but width a lower range. % todo source
+Z-Wave, introduced in 1999 is a wireless communicaiton protocol especially made for home automation and utilizes the 800-900 MHz range for transmission, therefore achieves higher range at a lower bandwidth still sufficient for the devices.
+
+Zigbee 2005
+
+2000s - custom expensive systems, but remote controllable
+
+2010s - smartphone, tablet control, cloud
+
+matter
+
+why local hosting is also important
+% todo sources
+
 \section{Stucture of a typical smart home system}
 a typical smart home system's structure
+
 - controller, maybe cloud
+
 - devices: actuators, sensors, etc.
+
 - user interfaces, protocols
+
 - etc, tadada
+
 \section{Current solutions of the market}
 - products
+
 - alexa, google voice, etc voice assistants
