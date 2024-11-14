@@ -1,0 +1,185 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.6">
+  <diagram name="Page-1" id="VztGIl-B7UwSjpQ2c4Hv">
+    <mxGraphModel dx="1434" dy="742" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-8" value="Internet" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.internet;" vertex="1" parent="1">
+          <mxGeometry x="315" y="60" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="720" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-5" value="House" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="620" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-10" value="Combined&amp;nbsp;&lt;br&gt;Router + Switch +&lt;br&gt;Wi-Fi AP" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_N_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="85" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-12" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="135" y="250" as="sourcePoint" />
+            <mxPoint x="328" y="137" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-59" value="DNAT&lt;br&gt;to&lt;div&gt;Control Server&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=default;" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-12">
+          <mxGeometry x="-0.1092" relative="1" as="geometry">
+            <mxPoint x="-51" y="26" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-14" value="Smart RGB&lt;br&gt;Lightbulb" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lightbulb;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-15" value="Smartphone" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/essential-app-1/16/mobile-phone-smart-screen-128.png" vertex="1" parent="1">
+          <mxGeometry x="560" y="225" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-16" value="Smart&lt;br&gt;Thermostat" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.thermostat;" vertex="1" parent="1">
+          <mxGeometry x="165" y="460" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-17" value="Smart&lt;br&gt;Garage Opener" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn3.iconfinder.com/data/icons/building-89/64/Garage-128.png;clipPath=inset(18.75% 1.56% 0% 0.78% round 5%);" vertex="1" parent="1">
+          <mxGeometry x="400" y="463.39" width="88" height="73.21600000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-18" value="Laptop" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#232F3E;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.laptop;" vertex="1" parent="1">
+          <mxGeometry x="680" y="270" width="70" height="50.4" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-23" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-14" target="zT7E-1F8OHJzPqmPh0ax-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="450" as="sourcePoint" />
+            <mxPoint x="160" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-43" value="Zigbee" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-23">
+          <mxGeometry x="-0.8455" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-24" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0.01;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-16" target="zT7E-1F8OHJzPqmPh0ax-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="430" as="sourcePoint" />
+            <mxPoint x="320" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-44" value="Z-Wave" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-24">
+          <mxGeometry x="-0.4263" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-25" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-17" target="zT7E-1F8OHJzPqmPh0ax-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="450" as="sourcePoint" />
+            <mxPoint x="350" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-45" value="Wi-Fi" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-25">
+          <mxGeometry x="-0.5027" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-26" value="" style="endArrow=none;html=1;rounded=0;entryX=-0.065;entryY=0.333;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="zT7E-1F8OHJzPqmPh0ax-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="155" y="267" as="sourcePoint" />
+            <mxPoint x="240" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-27" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.833;exitY=0.73;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-21" target="zT7E-1F8OHJzPqmPh0ax-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="490" as="sourcePoint" />
+            <mxPoint x="520" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-40" value="Wi-Fi" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-27">
+          <mxGeometry x="0.333" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-28" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.99;exitY=0.99;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-21" target="zT7E-1F8OHJzPqmPh0ax-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="460" as="sourcePoint" />
+            <mxPoint x="630" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-47" value="Wi-Fi" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-28">
+          <mxGeometry x="0.644" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-32" value="Heating&lt;br&gt;/&lt;div&gt;Cooling&lt;/div&gt;" style="shape=mxgraph.pid.vessels.vessel_(semi-tube_heating-cooling_coil);html=1;pointerEvents=1;align=center;verticalLabelPosition=middle;verticalAlign=middle;dashed=0;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="170" y="610" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-34" value="" style="endArrow=none;html=1;rounded=0;exitX=0.842;exitY=0.001;exitDx=0;exitDy=0;exitPerimeter=0;curved=1;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="620" as="sourcePoint" />
+            <mxPoint x="226" y="525" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="254" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-17" target="zT7E-1F8OHJzPqmPh0ax-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="340" as="sourcePoint" />
+            <mxPoint x="450" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-39" value="initial&lt;br&gt;setup&lt;br&gt;Bluetooth" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-38">
+          <mxGeometry x="-0.4213" y="-2" relative="1" as="geometry">
+            <mxPoint x="26" y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1" target="zT7E-1F8OHJzPqmPh0ax-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="328.43550720754524" y="466.6100000000001" as="sourcePoint" />
+            <mxPoint x="350" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-53" value="Z-Wave" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-49">
+          <mxGeometry x="-0.2093" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-50" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="530" as="sourcePoint" />
+            <mxPoint x="300" y="501.1765384615387" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-52" value="Mesh" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-50">
+          <mxGeometry x="-0.4237" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-51" value="Temperature&lt;br&gt;and Humidity&lt;br&gt;Sensor" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_humidity_sensor;" vertex="1" parent="1">
+          <mxGeometry x="290" y="466.7" width="66.61" height="66.61" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-55" value="Remote&lt;br&gt;Smartphone" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/essential-app-1/16/mobile-phone-smart-screen-128.png" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-21" value="Locally Hosted&lt;br&gt;Control Server" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#232F3E;shape=mxgraph.mscae.intune.dashboard;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="270" y="290" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-57" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1" target="zT7E-1F8OHJzPqmPh0ax-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="412" y="126" as="sourcePoint" />
+            <mxPoint x="420" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-60" value="To&lt;br&gt;Control Server" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-57">
+          <mxGeometry x="0.295" y="2" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-58" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;exitX=0.833;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="zT7E-1F8OHJzPqmPh0ax-21" target="zT7E-1F8OHJzPqmPh0ax-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="160" as="sourcePoint" />
+            <mxPoint x="550" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zT7E-1F8OHJzPqmPh0ax-61" value="REST via JSON&lt;br&gt;or WebSocket&lt;br&gt;via HTTP" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zT7E-1F8OHJzPqmPh0ax-58">
+          <mxGeometry x="0.4464" y="1" relative="1" as="geometry">
+            <mxPoint x="-93" y="46" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
