@@ -9,10 +9,6 @@ In most conventional, "non-smart" houses or flats, utility and convenience devic
 I believe that a demonstrational "box" model is an adequate and cost-effective solution to try out the usage of smart home systems and to simulate a proper system installed in a real house. During its implementation phase, I tried to follow two basic principles: cost-effectiveness (cheap price for a thesis project) and the usage of open-source software. We can often hear these days, that companies end supporting and updating their not so old, still completely functional products, which make them vulnerable to attacks and contributes to them becoming hazardous waste (take Amazon Echo Look as an example \cite{VergeAmazonEchoLook}). This problem can be mitigated to some extent with the usage of actively maintained open source software available to such devices, because this way they can run up-to-date software years after manufacturing, furthermore the devices chosen for the thesis project can be later repurposed in other projects.
 
 The demand for smart home system and home automation technology has been steadily increasing since their inception and there is active market potential in them (the Worldwide Economic Forum predicts it could react 13 trillion dollars by 2030). Initially, they were considered only as a convenience product (with remote control, a centralized control interface), but since then they have also become a solution of efficiency and safety. Examples for the earlier are automatized heating and motion controlled lights, for the latter are recorded security footage and its analysis, support of handicapped people. \cite{ChakSHS}
-% todo source
-
-% todo sw is just as much important as hw?
-% todo connection to iot
 
 \section{Motivation, previous work}
 
@@ -20,14 +16,25 @@ My motivation behind choosing this thesis project was mostly my previous work on
 
 For Training Project Laboratory, me and my two fellow students used an ESP-based microcontroller to control a few small electric components connected to it, which in large resembled a house's utilities. However, this was only a very rudimentary breadboard model, with continuous debug printing to the serial console and only a potentiometer and two buttons as inputs, but it was useful to familiarize ourselves with the usage and programming of a modern microcontroller liked by many hobby enthusiasts.
 
-Throughout Project Laboratory, I took the project further and made a proper shoebox smart home system model. Along with a basic floorplan for various rooms and electronic components placed in them, it featured a web-controllable user interface. Its software architecture was comprised of three main components: a JavaScript backend responsible for maintaining the components' status and communication between the microcontroller and user, microcontroller code for controlling the electronic components (reading sensor data, setting output for actuators), receiving and sending data to the backend and finally a React-based frontend to send commands and receive readings to and from the backend.
-%I decided to apply with it for Gadget Competition 2024 (organized by BME-MIT) and achieved 4th place on the competition.
-% todo maybe pic of box and ui
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=110mm, keepaspectratio]{figures/proj_lab_box.png}
+    \caption{Project Laboratory Box Model contents}
+    \label{fig:ProjLabBox}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=110mm, keepaspectratio]{figures/proj_lab_ui.png}
+    \caption{Project Laboratory Box Model User Interface}
+    \label{fig:ProjLabUI}
+\end{figure}
+
+Throughout Project Laboratory, I took the project further and made a proper shoebox smart home system model. Along with a basic floorplan for various rooms and electronic components placed in them (shown in \refstruc{fig:ProjLabBox}), it featured a web-controllable user interface (visible on \refstruc{fig:ProjLabUI}). Its software architecture was comprised of three main components: a JavaScript backend responsible for maintaining the components' status and communication between the microcontroller and user, microcontroller code for controlling the electronic components (reading sensor data, setting output for actuators), receiving and sending data to the backend and finally a React-based frontend to send commands and receive readings to and from the backend.
+
 For the Thesis Project, I've decided to continue work with the shoebox model, but focus more on the software side of improvement - the hardware, electronic components inside the box have remained mostly the same. I believe that the software of my Project Laboratory project was sufficient for showcasing simple smart home use cases in a demo environment, however would have been harder to further develop to extend with more devices and features than using already existing open-source smart home software with good community support, which I had also been looking forward to try out.
 
 \section{A brief history of smart home systems, protocols}
-% - development of protocols (not only used for smart homes) wifi, iot, zigbee, z-wave
-% - cloud, subscription world and future, why local hosting is important
 
 The Third Industrial Revolution's main innovation was the usage of IT and computer technology in order automate certain industrial processes and achieve a substantial speed up of tasks previously done via manual labor. \cite{UpkeepIndRev}
 The appearance of Programmable Logic Controllers (PLCs) and innovation in Robotics made it easier, than ever to precisely control electric devices with a certain logic in industrial installations with much less human supervision. This aspect of computer-based electric and electronic device control is also important for the functioning of smart home systems, however the latter only started to be developed much more later, after a demand appeared for them and manufacturers started to experiment. %todo source
