@@ -1,18 +1,32 @@
 \chapter{Implementation}
 
-During the project's plan 
+The implementation of the box model, according to the plans discussed in the previous chapter, mostly went without issues and was able to be put into practice. This chapter presents the steps of implementation in detail.
 
 \section{Floorplan}
 
-shoebox structuring to six rooms
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[page=1,keepaspectratio,width=110mm]{figures/box_floorplan.drawio.pdf}
+    \caption{Floorplan of the finished box model}
+    \label{fig:BoxFloorplan}
+\end{figure}
+
+The shoebox used as a base for the project was structured with cardboard and scotch tape to have six equal-sized rooms inside it, shown on \refstruc{fig:BoxFloorplan}. Internal and external cutouts were made in the box to be able to push cables through them, have ventilation holes for the fans and a window for the rolling shutter, to be seen from outside.
 
 \section{Connecting devices to the microcontroller}
 
-exact hw components
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=150mm, keepaspectratio]{figures/nodemcu_32s_pinout.png}
+    \caption{NodeMCU ESP32S Pinout}
+    \label{fig:NodeMCU32Pinout}
+\end{figure}
 
-// tell that it can be extended with more devices up to the limit of the esp, iteratively
+The NodeMCU ESP32S has many ports with different functionalities, as shown on \refstruc{fig:NodeMCU32Pinout}. \cite{AIThinkerNodeMCU32} It has a Micro-USB port that can be used for supplying power and connection to a computer for programming, flashing firmware and serial console. The 5V supplied from the USB port is connected to the VIN 5V pin and there is also a VIN 3.3V port from a voltage converter for supplying power to lower-voltage external components, besides the three ground pins. There are many more GPIO (General-Purpose Input/Output) pins with different input-output functionalities, however not every of them can be used for every purpose. For example, ADC/DAC pins can be used for Analog-Digital Conversion or vice-versa, therefore sense or create voltages between 0V and 3.3V, some can output PWM (Pulse Width Modulation) signals for dimming LEDs, controlling servos etc., serial pins can be used for serial communication, SD card interfacing and there are some only binary input-output pins. The 3.3V, 5V and ground pins were connected via short cables to the power rail sides of the main breadboard for easy distribution of power to components and for the other components, mostly jumper cables were used. Jumper cables and wires were used to connect most components to the breadboards, which also served as extension to have appropriate length of cables for the components to be able to put into their desired location in the box. The method for cable splicing varied, for some, soldering and shrink tubes were used and for others, only electrical tape was used due to the smoke detection system installed in the dormitory.
 
-picture of the box in figure
+The microcontroller's number of pins and their functionalities were adequate the project, extra components can be added up to the limit the available free pins and the required features on them. The pins used for room LEDs were chosen to be non-ADC GPIO pins and for each one, 100$\Omega$ resistors were put between the LED's anode and the microcontroller pin, the cathode was connected to the side ground of the breadboard. An LED put inside a small toy car was also connected to a PWM-capable pin with 50$\Omega$ resistance in series to indicate a simulated electric charging based on the readings of the light dependant resistor (LDR). The LDR's wiring required a different approach: one end connected to the 3.3V rail, and the other to one of the microcontroller's ADC pins, and to the ground with a 10k$\Omega$ resistor. The three LM235Z temperature sensors were connected with yet another wiring method: 2k$\Omega$ resistors were put between 5V and their V+ terminals, to this the ADC pins were also connected and finally, the V- pins were connected to ground. The SG90 servo was connected to 5V, ground and a PWM capable pin for control. Due to the limited space remaining on the first breadboard, a second one was utilized for the fan and Peltier powering circuit. The ground between the two breadboard was connected and a USB cable with male plugs spliced was created to utilize external power from a 5V 2A phone charger. The 5V fans are powered and speed controlled by BS170 transistors by varying the voltage supplied for them: PWM pins are connected to the gate terminal, along with 10k$\Omega$ resistors to ground, the source terminal connected to ground and diodes placed between 5V and drain to protect the microcontroller from the inductive load of fans. The fans' negative terminals were connected to drain and the positive to 5V. Finally, the TEC1-12703 Peltier module is powered and controlled by a BD241C transistor (with extra cooling attached in the form of soda can tab openers screwed into it). This Peltier module's maximum operating voltage is rated to be 15.4V, which means, when run at a lower voltage, it draws less current, therefore has lower power. According to its datasheet, at 5V, its current is approximately 0.8A, therefore the device draws about 4 watts of power and it decreases with more ambient temperature as the current gets less. \cite{PeltierDatasheet} 300$\Omega$ resistance was used between one of the DAC pins and the transistor's base, the emittor was connected to ground and the Peltier's terminals were connected to the collector and 5V.
+
+% todo picture of box
 
 \section{Network setup}
 
@@ -33,6 +47,8 @@ talk about prev
 in docker / maybe in a vm for extra voice assistant
 
 \subsection{ESPHome}
+
+yaml files
 
 talk about arduino cpp, platformio, ...
 
