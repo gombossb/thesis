@@ -1,0 +1,21 @@
+- id: '1728425516452'
+  alias: Car charging
+  description: ''
+  triggers:
+  - type: voltage
+    device_id: 2d0206253e79223d340cc0ea100d1c5e
+    entity_id: 0cfe07eb19c4fd9cc535c3c8cb100713
+    domain: sensor
+    trigger: device
+    above: 0
+    below: 100
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 5
+    target:
+      device_id: 2d0206253e79223d340cc0ea100d1c5e
+      entity_id: light.carchargingled_2
+  mode: single
