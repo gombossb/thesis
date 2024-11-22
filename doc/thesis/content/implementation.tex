@@ -42,33 +42,70 @@ The microcontroller's number of pins and their functionalities were adequate the
 
 \section{Network setup}
 
-The Wi-Fi communication medium was set up using a TP-Link WR841N combined network device, targeted for small or home office focused devices. Such devices almost always feature a web-based user interface for their setup and configuration. This was used to flash DD-WRT on it, which is an open-source Linux-based router firmware targeting a variety of Wi-Fi routers and embedded systems. \cite{DDWRTHomepage} It was then set up to mimick a typical home environment, but with a hidden SSID and without internet connectivity and NAT (Network Address Translation, by setting the operation mode from gateway to router). The IP address range remained the default 192.168.1.0/24 and the router's IP also remained the original 192.168.1.1, due to it not colliding with other networks actively used on the laptop and smartphone.
+The Wi-Fi communication medium was set up using a TP-Link WR841N combined network device, targeted for small or home office use. Such devices almost always feature a web-based user interface for their setup and configuration. This was used to flash DD-WRT on it, which is an open-source Linux-based router firmware targeting a variety of Wi-Fi routers and embedded systems. \cite{DDWRTHomepage} It was then set up to mimick a typical home environment, with an SSID of esp\_smart\_home, WPA2-PSK authentication and without internet connectivity and without NAT (Network Address Translation, by setting the operation mode from gateway to router). The IP address range remained the default 192.168.1.0/24 and the router's IP also remained the original 192.168.1.1, due to it not colliding with other networks actively used on the laptop and smartphone.
 
-An extra USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-Fi network, with a custom network profile configuration. The use of this network was limited to the specific network adapter, set as hidden and manual IP configuration was used instead of DHCP to ensure a fixed IP address of 192.168.1.100 and no default gateway learned from this network. The Android-based smartphone used for the project can also be connected to this network, which even though doesn't have Internet access, mobile data can still be used from its SIM card as a fallback for Internet connectivity.
+An extra USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-Fi network, with a custom network profile configuration. Initially, the use of this adapter was done with a network profile limited to the specific network adapter and manual IP configuration was used instead of DHCP to ensure a fixed IP address of 192.168.1.100 and no default gateway learned from this network. Later, it was passed through as a USB device to a virtual machine (VM) with the same Wi-Fi and IP configuration. The Android-based smartphone used for the project can also be connected to this network, which even though doesn't have Internet access, mobile data can still be used from its SIM card as a fallback for Internet connectivity.
 
 \section{Software setup}
 
-The selected software environment in planning was suitable for the usage of obtained hardware, this section showcases the steps taken for setup. The personal laptop used for development had Arch Linux installed, the phone used for testing ran Android 14. 
-laptop - Linux
-phone - Android 14
+The selected software environment in planning was suitable for the usage of obtained hardware, this section showcases the steps taken for software setup. The personal laptop used for development had a Linux distribution installed, the smartphone used for testing ran Android 14. 
 
 \subsection{HomeAssistant initial setup}
 
-in docker / maybe in a vm for extra voice assistant
+Initially, Home Assistant was set up in a Docker container environment running on the laptop, with a Docker Compose file specifying the parameters for the container. Docker Engine is a container runtime engine, that makes it possible to run prepackaged container images utilizing the host machine's kernel with minimal overhead and adequate isolation. \cite{DockerContainer} The container images contain a Linux operating system's system libraries, executables and the application itself, therefore provide an easily reproducible, uniform runtime environment despite the differences in various systems. By itself, Docker has a command line interface to run and manage its containers, which means it has to be parameterized from the command line, or put into a script in its parameterized form and executed. Docker Compose is a solution for defining and running multiple Docker containers using an easy-to-manage definition, put into a YAML file. \cite{DockerCompose}
+
+\begin{lstlisting}[language=,caption=Docker Compose file used for the initial Home Assistant environment,label=lst:HADockerCompose]
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:2024.10.3"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    ports:
+      - 192.168.1.100:8123:8123
+      - 127.0.0.1:8123:8123
+\end{lstlisting}
+
+In \refstruc{lst:HADockerCompose}, the Docker Compose definition of the set up Home Assistant container can be seen: 2024.10.3 is the selected version (tag) of the image is used, the config directory from the compose file's directory is mounted directly into the container's file system as /config along with the host machine's local time and dbus for time and device access, and finally, socket connections are bound on the host machine's 8123 port on the Wi-Fi card and localhost interfaces to access the same port inside the container. Even though only one container is defined in the compose file, it still shows Compose's advantage, as the environment can be run with a simple command, when inside its directory: \verb+docker compose up+ .
+
+
+migrated to HAOS due to voice assistant only available in that
+
+talk about virtual machines
+
+virtualbox
+
+2gb ram, 2 vcpu, 16 gb in host
+
+vdi
+
+nw adapt usb passthrough
+
+integrations
+
+addons
 
 \subsection{ESPHome}
 
+talk about arduino cpp, platformio, ... which one it uses, comparison
+
 yaml files
 
-talk about arduino cpp, platformio, ...
+set up devices
 
 run from docker
 
 ota flashing via wifi
 
+HA integration setup
+
 \subsection{Additional user interface setup}
 
-dashboard, entity customization
+entity customization
+
+dashboard
 
 \subsection{Automations}
 
