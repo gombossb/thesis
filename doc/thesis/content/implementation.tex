@@ -78,8 +78,8 @@ This setup in the Docker environment functioned properly, however had one limita
 
 Virtual Machine Hypervisors allow physical, or host computer resources to be shared to multiple Virtual Machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clusterized servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
 
-To run HA OS, the selected VM hypervisor solution was Oracle VirtualBox, due to it being free and and the previous experience gained with it. HA OS is distributed in different disk file formats for various hypervisors, VDI was used for VirtualBox. % todo ha source?
-Initially, 2 virtual CPU cores and 2 GB of RAM of the host's 16 GB was assigned to it, however it was later changed to 4 cores and 4 GB of RAM. Two virtual network adapters were added to the VM: one in NAT mode, to provide Internet connection and one in Host-only adapter mode, to be able to be reached from the host (on it's web UI (8123) and SSH (22) ports). Most VM hypervisors offer USB passthrough to virtual machines, which hides the USB device from the host and makes it seem as it was connected to it directly. USB passthrough was used to access the USB Wi-Fi adapter and the network credentials were set via a parameterized \verb+ha network+ command. The SSH addon was also installed to access command line configurations from client terminal installed on the host operating system.
+To run HA OS, the selected VM hypervisor solution was Oracle VirtualBox, due to it being free and and the previous experience gained with it in the past. HA OS is distributed in different disk file formats for various hypervisors, VDI was used for VirtualBox. % todo ha source?
+Initially, 2 virtual CPU cores and 2 GB of RAM of the host's 16 GB was assigned to it, however it was later changed to 4 cores and 4 GB of RAM. Two virtual network adapters were added to the VM: one in NAT mode, to provide Internet connection for updates and downloading add-ons, and one adapter in Host-only adapter mode, to be able to be reached from the host (on it's web UI (8123) and SSH (22) ports). Most VM hypervisors offer USB passthrough to virtual machines, which hides the USB device from the host and makes it seem as it was connected to the VM directly. USB passthrough was used to access the USB Wi-Fi adapter and the network credentials were set via a parameterized \verb+ha network+ command with the specific SSID, password and IP configuration. The SSH addon was also installed to access command line configurations from client terminal installed on the host operating system. The configuration of the new environment didn't needed to be redone from scratch, as the old environment could be exported to a tar backup file, which could be imported to the new HA OS environment without issues.
 
 \begin{figure}[!ht]
   \centering
@@ -135,7 +135,7 @@ After successfully flashing the compiled firmware to the microcontroller, it can
   \label{fig:HAesphomeint}
 \end{figure}
 
-ESPHome supports many types of electronic components connected to the microcontroller's pins (as the project's homepage shows), with a relatively easy configuration. \cite{ESPHomeHomepage} To set devices up to be controlled with ESPHome, their configuration has to be defined in the YAML configuration file, as shown in \refstruc{lst:ESPHomeDevConf} for an LED switch.
+ESPHome supports many types of electronic components connected to the microcontroller's pins (as the project's homepage shows), with a relatively easy configuration. \cite{ESPHomeHomepage} To set devices up to be controlled with ESPHome, their configuration has to be defined in the YAML configuration file, as shown in \refstruc{lst:ESPHomeDevConf} for an LED switch. Each device should have an id and name set, along with platform specific details, such as the GPIO pin number and mode (input / output).
 
 \begin{lstlisting}[language=,caption=ESPHome configuration for a simple LED switch,label=lst:ESPHomeDevConf]
 switch:
@@ -148,7 +148,7 @@ switch:
   restore_mode: ALWAYS_OFF
 \end{lstlisting}
 
-This configuration was also done to the other connected components as well, but with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability reasons. With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation. 
+This configuration was also done iteratively to the other connected components as well, but in separate files with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability reasons. With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation, as if they were written in that single one.
 
 \begin{lstlisting}[language=,caption=ESPHome package includes in the main configuration file,label=lst:ESPHomePackageIncludes]
 packages:
@@ -160,8 +160,6 @@ packages:
   tempsensors: !include packages/tempsensors.yaml
 \end{lstlisting}
 
-After reconfiguring the microcontroller with extra devices, Home Assistant automatically takes care of the devices added and new entities are created for them. In Home Assistant's terminology, entities are the basic building blocks that hold data and are used to monitor physical properties or control entities. On \refstruc{fig:HAesphomeEntities}, a few entities from the ESPHome integration device are shown. 
-
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=150mm, keepaspectratio]{figures/esphome_entities.png}
@@ -169,7 +167,7 @@ After reconfiguring the microcontroller with extra devices, Home Assistant autom
   \label{fig:HAesphomeEntities}
 \end{figure}
 
-The ESPHome integration's device, its controls, sensors and configurations can also be seen and configured, as shown on \refstruc{fig:HAesphomeControls}.
+After reconfiguring the microcontroller with extra devices, Home Assistant automatically takes care of the devices added and new entities are created for them. In Home Assistant's terminology, entities are the basic building blocks that hold data and are used to monitor physical properties or control entities. \cite{HAConceptsTerminology} On \refstruc{fig:HAesphomeEntities}, a few entities from the ESPHome integration device are shown. 
 
 \begin{figure}[!ht]
   \centering
@@ -177,6 +175,8 @@ The ESPHome integration's device, its controls, sensors and configurations can a
   \caption{Device the of ESPHome integration and its control entities}
   \label{fig:HAesphomeControls}
 \end{figure}
+
+The ESPHome integration's device, its controls, sensors and configurations can also be seen and configured, as shown on \refstruc{fig:HAesphomeControls}.
 
 One component connected to the microcontroller was harder to be configured for use, than others, which is the SG90 servo used for the rolling shutter. Fortunately, other ESPHome users had also tried to make this exact servo model work and one forum member was able to and provided configuration code for it, which includes PWM configuration, conversion of value from a number slider's -100 to 100 range to the servos 180 degrees of control and a sensor for the currently set position. \cite{ESPHomeForumSG90} This example superbly shows an advantage of open-source software and its communities, how projects can be easily expanded with extra, more complex components and how users can get support for their problems.
 
