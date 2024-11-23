@@ -7,5 +7,5 @@
 ## Compile and upload
 ```bash
 # for first flashing, add: --device=/dev/ttyUSB0
-docker run --rm -v "./esphome":/config -it ghcr.io/esphome/esphome:2024.10.3 run smarthome.yaml
+docker run --rm -v "./esphome":/config -it ghcr.io/esphome/esphome:2024.11.1 run smarthome.yaml
 ```
