@@ -148,25 +148,55 @@ switch:
   restore_mode: ALWAYS_OFF
 \end{lstlisting}
 
-set up devices, packages
+This configuration was also done to the other connected components as well, but with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability reasons. With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation. 
 
-entity
+\begin{lstlisting}[language=,caption=ESPHome package includes in the main configuration file,label=lst:ESPHomePackageIncludes]
+packages:
+  fans: !include packages/fans.yaml
+  ldr: !include packages/ldr.yaml
+  leds: !include packages/leds.yaml
+  peltier: !include packages/peltier.yaml
+  shutter: !include packages/shutter.yaml
+  tempsensors: !include packages/tempsensors.yaml
+\end{lstlisting}
 
-sg90 mention post?
+After reconfiguring the microcontroller with extra devices, Home Assistant automatically takes care of the devices added and new entities are created for them. In Home Assistant's terminology, entities are the basic building blocks that hold data and are used to monitor physical properties or control entities. On \refstruc{fig:HAesphomeEntities}, a few entities from the ESPHome integration device are shown. 
 
-\subsection{Additional user interface setup}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/esphome_entities.png}
+  \caption{Home Assistant entities provided by the ESPHome integration}
+  \label{fig:HAesphomeEntities}
+\end{figure}
+
+The ESPHome integration's device, its controls, sensors and configurations can also be seen and configured, as shown on \refstruc{fig:HAesphomeControls}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/esphome_controls.png}
+  \caption{Device the of ESPHome integration and its control entities}
+  \label{fig:HAesphomeControls}
+\end{figure}
+
+One component connected to the microcontroller was harder to be configured for use, than others, which is the SG90 servo used for the rolling shutter. Fortunately, other ESPHome users had also tried to make this exact servo model work and one forum member was able to and provided configuration code for it, which includes PWM configuration, conversion of value from a number slider's -100 to 100 range to the servos 180 degrees of control and a sensor for the currently set position. \cite{ESPHomeForumSG90} This example superbly shows an advantage of open-source software and its communities, how projects can be easily expanded with extra, more complex components and how users can get support for their problems.
+
+\subsection{Additional user interface setup, customization}
+
+\subsubsection{Entity customization}
 
 entity customization
 
+\subsubsection{Dashboard customization}
+
 dashboard
-
-\subsection{Automations}
-
-TODO eg. car charging led
 
 \subsection{Smartphone setup}
 
 TODO
+
+\subsection{Automations}
+
+TODO eg. car charging led
 
 \subsection{Voice assistant}
 
