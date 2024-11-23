@@ -68,38 +68,91 @@ services:
       - 127.0.0.1:8123:8123
 \end{lstlisting}
 
-In \refstruc{lst:HADockerCompose}, the Docker Compose definition of the set up Home Assistant container can be seen: 2024.10.3 is the selected version (tag) of the image is used, the config directory from the compose file's directory is mounted directly into the container's file system as /config along with the host machine's local time and dbus for time and device access, and finally, socket connections are bound on the host machine's 8123 port on the Wi-Fi card and localhost interfaces to access the same port inside the container. Even though only one container is defined in the compose file, it still shows Compose's advantage, as the environment can be run with a simple command, when inside its directory: \verb+docker compose up+ .
+In \refstruc{lst:HADockerCompose}, the Docker Compose definition of the set up Home Assistant container can be seen: 2024.10.3 is the selected version (tag) of the image is used, the config directory from the compose file's directory is mounted directly into the container's file system as /config along with the host machine's local time and dbus for time and device access, and finally, socket connections are bound on the host machine's 8123 port on the Wi-Fi card and localhost interfaces to access the same port inside the container. Even though only one container is defined in the compose file, it still shows Compose's advantage, as the environment can be run with a simple command in the terminal, when inside its directory:
 
+\begin{lstlisting}[language=]
+docker compose up
+\end{lstlisting}
 
-migrated to HAOS due to voice assistant only available in that
+This setup in the Docker environment functioned properly, however had one limitation: HomeAssistant add-ons aren't supported in the container variant, only in the Home Assistant Operating System or the Supervised installation (installed on top of a Linux distribution) variants. A voice assistant was a sought after feature in the project, therefore it was migrated to the HA OS variant, run inside a Virtual Machine, or VM.
 
-talk about virtual machines
+Virtual Machine Hypervisors allow physical, or host computer resources to be shared to multiple Virtual Machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clusterized servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
 
-virtualbox
+To run HA OS, the selected VM hypervisor solution was Oracle VirtualBox, due to it being free and and the previous experience gained with it. HA OS is distributed in different disk file formats for various hypervisors, VDI was used for VirtualBox. % todo ha source?
+Initially, 2 virtual CPU cores and 2 GB of RAM of the host's 16 GB was assigned to it, however it was later changed to 4 cores and 4 GB of RAM. Two virtual network adapters were added to the VM: one in NAT mode, to provide Internet connection and one in Host-only adapter mode, to be able to be reached from the host (on it's web UI (8123) and SSH (22) ports). Most VM hypervisors offer USB passthrough to virtual machines, which hides the USB device from the host and makes it seem as it was connected to it directly. USB passthrough was used to access the USB Wi-Fi adapter and the network credentials were set via a parameterized \verb+ha network+ command. The SSH addon was also installed to access command line configurations from client terminal installed on the host operating system.
 
-2gb ram, 2 vcpu, 16 gb in host
-
-vdi
-
-nw adapt usb passthrough
-
-integrations
-
-addons
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_about.png}
+  \caption{Home Assistant OS running in VirtualBox with its web GUI opened from a browser}
+  \label{fig:HAabout}
+\end{figure}
 
 \subsection{ESPHome}
 
-talk about arduino cpp, platformio, ... which one it uses, comparison
+To get started with installing ESPHome on the microcontroller, its official getting started with command line guide was followed. \cite{ESPHomeGettingStarted} A sample configuration YAML file was created using the wizard command. The ESPHome compiler and flasher was run from a Docker environment, first flashed via USB and later updated wirelessly using ESPHome's the Over-the-Air (OTA) functionality via Wi-Fi.
 
-yaml files
+\begin{lstlisting}[language=,caption=Docker command to compile and flash ESPHome via OTA / USB,label=lst:ESPHomeDocker]
+# for first flashing, add: --device=/dev/ttyUSB0
+docker run --rm -v "./esphome":/config -it ghcr.io/esphome/esphome:2024.11.1 run smarthome.yaml
+\end{lstlisting}
 
-set up devices
+The previously mentioned YAML is a human-friendly data serialization language with a really simple syntax. \cite{YAMLHomepage}
 
-run from docker
+\begin{lstlisting}[language=,caption=YAML file example,label=lst:YAMLexample]
+shopping_list:
+  - bread
+  - milk
+  - chocolate
+# ideal room temperature
+temperature: 22
+winter_months: ["December", "January", "February"]
+\end{lstlisting}
 
-ota flashing via wifi
+By default, an ESPHome configuration file only consists of one main YAML file, which contains all configurations. On \refstruc{lst:ESPHomeWizardEx}, an excerpt of a configuration file is shown generated by the wizard for the NodeMCU ESP32S microcontroller.
 
-HA integration setup
+\begin{lstlisting}[language=,caption=Excerpt of a configuration file generated by the ESPHome wizard,label=lst:ESPHomeWizardEx]
+esphome:
+  name: livingroom
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+ota:
+  - platform: esphome
+    password: ""
+wifi:
+  ssid: "homenetwork"
+  password: "teriyaki-noodles"
+\end{lstlisting}
+
+After successfully flashing the compiled firmware to the microcontroller, it can then be added to the Home Assistant environment with an "integration". Integration is a term in Home Assistant's ecosystem to connect and integrate other software and hardware platforms, in our case ESPHome to the Home Assistant environment as a device. \cite{HAConceptsTerminology}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_esphome_int.png}
+  \caption{ESPHome integration for Home Assistant set up}
+  \label{fig:HAesphomeint}
+\end{figure}
+
+ESPHome supports many types of electronic components connected to the microcontroller's pins (as the project's homepage shows), with a relatively easy configuration. \cite{ESPHomeHomepage} To set devices up to be controlled with ESPHome, their configuration has to be defined in the YAML configuration file, as shown in \refstruc{lst:ESPHomeDevConf} for an LED switch.
+
+\begin{lstlisting}[language=,caption=ESPHome configuration for a simple LED switch,label=lst:ESPHomeDevConf]
+switch:
+- platform: gpio
+  id: bedroom_led
+  pin:
+    number: GPIO21
+    mode: OUTPUT
+  name: "BedroomLED"
+  restore_mode: ALWAYS_OFF
+\end{lstlisting}
+
+set up devices, packages
+
+entity
+
+sg90 mention post?
 
 \subsection{Additional user interface setup}
 
@@ -111,6 +164,10 @@ dashboard
 
 TODO eg. car charging led
 
-\subsection{Voice assistant}
+\subsection{Smartphone setup}
 
 TODO
+
+\subsection{Voice assistant}
+
+addons
