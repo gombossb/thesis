@@ -172,7 +172,7 @@ After reconfiguring the microcontroller with extra devices, Home Assistant autom
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=150mm, keepaspectratio]{figures/esphome_controls.png}
-  \caption{Device the of ESPHome integration and its control entities}
+  \caption{Device of the ESPHome integration and its control entities}
   \label{fig:HAesphomeControls}
 \end{figure}
 
@@ -204,19 +204,33 @@ Helpers are software tools to add or change functionality of different entities.
 
 \subsubsection{Dashboard customization}
 
-default dashboard shows devices, but everything in it
+Multiple dashboards can be created in Home Assistant to control and show different aspects and devices of a house. Upon setup, a default dashboard is automatically created, the layout of which is shown on \refstruc{fig:HAdefaultDashboard}.
 
-in a typical home env would be more devices, but here one provides almost everything
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_dashboard_default.png}
+  \caption{Default dashboard layout with controls and readings for the box device and weather forecast integration set to Budapest}
+  \label{fig:HAdefaultDashboard}
+\end{figure}
 
-therefore different functions should be separated eg leds, fans, heating, etc.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_dashboard_masonry.png}
+  \caption{Masonry dashboard layout with historical graphs for room temperatures}
+  \label{fig:HAmasonryDashboard}
+\end{figure}
 
-masonry / default ? 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_dashboard_custom.png}
+  \caption{Custom sections dashboard with devices grouped together by type and weather forecast integration set to Budapest}
+  \label{fig:HAcustomDashboard}
+\end{figure}
 
-tabs for different views
+On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added two sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" section.
+% maybe area?
 
-screenshots
-
-area?
+A masonry type view was also added to the dashboard, which is shown on \refstruc{fig:HAmasonryDashboard}. When multiple views are present for a dashboard, a tab strip is shown to select between them, as shown on the screenshot. On the masonry view, added cards are sorted in columns based on their size. % TODO three temp stuff
 
 \subsection{Smartphone setup}
 
