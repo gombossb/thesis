@@ -44,7 +44,8 @@ The microcontroller's number of pins and their functionalities were adequate the
 
 The Wi-Fi communication medium was set up using a TP-Link WR841N combined network device, targeted for small or home office use. Such devices almost always feature a web-based user interface for their setup and configuration. This was used to flash DD-WRT on it, which is an open-source Linux-based router firmware targeting a variety of Wi-Fi routers and embedded systems. \cite{DDWRTHomepage} It was then set up to mimick a typical home environment, with an SSID of esp\_smart\_home, WPA2-PSK authentication and without internet connectivity and without NAT (Network Address Translation, by setting the operation mode from gateway to router). The IP address range remained the default 192.168.1.0/24 and the router's IP also remained the original 192.168.1.1, due to it not colliding with other networks actively used on the laptop and smartphone.
 
-An extra USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-Fi network, with a custom network profile configuration. Initially, the use of this adapter was done with a network profile limited to the specific network adapter and manual IP configuration was used instead of DHCP to ensure a fixed IP address of 192.168.1.100 and no default gateway learned from this network. Later, it was passed through as a USB device to a virtual machine (VM) with the same Wi-Fi and IP configuration. The Android-based smartphone used for the project can also be connected to this network, which even though doesn't have Internet access, mobile data can still be used from its SIM card as a fallback for Internet connectivity.
+An extra USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-Fi network, with a custom network profile configuration. Initially, the use of this adapter was done with a network profile limited to the specific network adapter and manual IP configuration was used instead of DHCP to ensure a fixed IP address of 192.168.1.100 and no default gateway learned from this network. Later, it was passed through as a USB device to a virtual machine (VM) with the same Wi-Fi and IP configuration. The Android-based smartphone used for the project can also be connected to this network, but won't have internet connection despite having an Internet-capable SIM card put into it, according to gained experience.
+%which even though doesn't have Internet access, mobile data can still be used from its SIM card as a fallback for Internet connectivity.
 
 \section{Software setup}
 
@@ -230,11 +231,20 @@ Multiple dashboards can be created in Home Assistant to control and show differe
 On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added two sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" section.
 % maybe area?
 
-A masonry type view was also added to the dashboard, which is shown on \refstruc{fig:HAmasonryDashboard}. When multiple views are present for a dashboard, a tab strip is shown to select between them, as shown on the screenshot. On the masonry view, added cards are sorted in columns based on their size. % TODO three temp stuff
+A masonry type view was also added to the dashboard, which is shown on \refstruc{fig:HAmasonryDashboard}. When multiple views are present for a dashboard, a tab strip is shown to select between them, as shown on the screenshot. On the masonry view, added cards are sorted in columns based on their size, three equal sized historical graphs were added of the room temperatures.
 
 \subsection{Smartphone setup}
 
-TODO
+Besides having a web-based UI, Home Assistant also has mobile applications for the Android and iOS platforms called Home Assistant Companion. \cite{HACompanion} To test the mobile application, it was installed to a personal Android smartphone. The smartphone was connected to the Wi-Fi network with its credentials and the IP address of the HA OS VM Wi-Fi adapter (http://192.168.1.100:8123) was entered into the application. On \refstruc{fig:HAandroidScreenshot}, a screenshot of the Android application is shown.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=70mm, keepaspectratio]{figures/homeassistant_android_screenshot.png}
+  \caption{Home Assistant Companion app running on Android 14}
+  \label{fig:HAandroidScreenshot}
+\end{figure}
+
+Contrary to expectations, simultaneous use of the the Internet-less Wi-Fi network and the phone's data-enabled SIM card for Internet connection didn't work, even if the "Mobile data always active" option was turned on in the developer settings. A message is shown when connecting to the network about it not having an Internet connection and whether the phone should stay connected to it and only upon pressing yes can the server be reached. But at the same time, the status bar shows that LTE disappears, which can mean that the radio data connection is dropped or only the routing table is changed, but in such a way that the default gateway gets overriden to the Wi-Fi network. It would likely be possible to be able to change this behaviour with a rooted phone (where a root shell access is present), but its risks and disadvantages aren't worth it for this simple test scenario. And in a typical home network environment, where wouldn't be a need to access two networks simultaneously, the HA OS server and the Internet would be able to be reached at the same time.
 
 \subsection{Automations}
 
@@ -243,5 +253,11 @@ TODO eg. car charging led
 \subsection{Voice assistant}
 
 addon conf
+
+piper: tts
+
+whisper: stt
+
+low quality
 
 screenshot
