@@ -51,7 +51,7 @@ An extra USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-
 
 The selected software environment in planning was suitable for the usage of obtained hardware, this section showcases the steps taken for software setup. The personal laptop used for development had a Linux distribution installed, the smartphone used for testing ran Android 14. 
 
-\subsection{HomeAssistant initial setup}
+\subsection{HomeAssistant initial setup, migration}
 
 Initially, Home Assistant was set up in a Docker container environment running on the laptop, with a Docker Compose file specifying the parameters for the container. Docker Engine is a container runtime engine, that makes it possible to run prepackaged container images utilizing the host machine's kernel with minimal overhead and adequate isolation. \cite{DockerContainer} The container images contain a Linux operating system's system libraries, executables and the application itself, therefore provide an easily reproducible, uniform runtime environment despite the differences in various systems. By itself, Docker has a command line interface to run and manage its containers, which means it has to be parameterized from the command line, or put into a script in its parameterized form and executed. Docker Compose is a solution for defining and running multiple Docker containers using an easy-to-manage definition, put into a YAML file. \cite{DockerCompose}
 
@@ -80,7 +80,7 @@ This setup in the Docker environment functioned properly, however had one limita
 Virtual Machine Hypervisors allow physical, or host computer resources to be shared to multiple Virtual Machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clusterized servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
 
 To run HA OS, the selected VM hypervisor solution was Oracle VirtualBox, due to it being free and and the previous experience gained with it in the past. HA OS is distributed in different disk file formats for various hypervisors, VDI was used for VirtualBox. % todo ha source?
-Initially, 2 virtual CPU cores and 2 GB of RAM of the host's 16 GB was assigned to it, however it was later changed to 4 cores and 4 GB of RAM. Two virtual network adapters were added to the VM: one in NAT mode, to provide Internet connection for updates and downloading add-ons, and one adapter in Host-only adapter mode, to be able to be reached from the host (on it's web UI (8123) and SSH (22) ports). Most VM hypervisors offer USB passthrough to virtual machines, which hides the USB device from the host and makes it seem as it was connected to the VM directly. USB passthrough was used to access the USB Wi-Fi adapter and the network credentials were set via a parameterized \verb+ha network+ command with the specific SSID, password and IP configuration. The SSH addon was also installed to access command line configurations from client terminal installed on the host operating system. The configuration of the new environment didn't needed to be redone from scratch, as the old environment could be exported to a tar backup file, which could be imported to the new HA OS environment without issues.
+Initially, 2 virtual CPU cores and 2 GB of RAM of the host's 16 GB was assigned to it, however it was later changed to 4 GB of RAM. Two virtual network adapters were added to the VM: one in NAT mode, to provide Internet connection for updates and downloading add-ons, and one adapter in Host-only adapter mode, to be able to be reached from the host (on it's web UI (8123) and SSH (22) ports). Most VM hypervisors offer USB passthrough to virtual machines, which hides the USB device from the host and makes it seem as it was connected to the VM directly. USB passthrough was used to access the USB Wi-Fi adapter and the network credentials were set via a parameterized \verb+ha network+ command with the specific SSID, password and IP configuration. The SSH addon was also installed to access command line configurations from client terminal installed on the host operating system. The configuration of the new environment didn't needed to be redone from scratch, as the old environment could be exported to a tar backup file, which could be imported to the new HA OS environment without issues.
 
 \begin{figure}[!ht]
   \centering
@@ -252,12 +252,11 @@ TODO eg. car charging led
 
 \subsection{Voice assistant}
 
-addon conf
+As a prerequisite for the locally hosted voice assistant, the Home Assistant Docker environment was migrated to HA OS running in a VM, explained in more detail in chapter 3.4.1. To set up the voice assistant environment, the installation guide was followed to set up the Piper (text-to-speech) and Whisper (speech-to-text) add-ons. \cite{HALocalAssist} The add-ons were configured to use a low quality speech detection and synthetization, in order to ensure fast response, as even with medium, the response time dramatically increased after pronouncing the commands. A screenshot of the assistant can be seen on \refstruc{fig:HAandroidVoiceAssistant}. The speech detection and synthetization supports many languages to be configured, English (US), German and Hungarian were tried and out of these, English had the best accuracy of understanding and executing the said commands. Although it is impressive, it only works with simple commands, when exact device names are specified and doesn't reach the level of Artificial Intelligence based chatbots that gained a rapid technology boom in the last few years.
 
-piper: tts
-
-whisper: stt
-
-low quality
-
-screenshot
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=70mm, keepaspectratio]{figures/homeassistant_android_assist.png}
+  \caption{Screenshot of voice assistant in action}
+  \label{fig:HAandroidVoiceAssistant}
+\end{figure}
