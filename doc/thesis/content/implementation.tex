@@ -184,11 +184,39 @@ One component connected to the microcontroller was harder to be configured for u
 
 \subsubsection{Entity customization}
 
-entity customization
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=90mm, keepaspectratio]{figures/homeassistant_entity_customization.png}
+  \caption{Entity customization in Home Assistant}
+  \label{fig:HAentityCustomization}
+\end{figure}
+
+Customizations can be applied on Home Assistant entities to better suit the user's needs. Each entity has a unique id, which is used as a basis to uniquely identify a specific entity and it is guaranteed to be static and never changes. \cite{HAFAQUniqueID} When present, it gets assigned an entity id, which is in the form of \verb+<domain>.<id>+ and is used as a logical identifier in dashboards, automations and others. \cite{HAEntitiesDomains} To give examples, \verb+fan.fan_1+ is in the fan domain, therefore can be controlled as a fan, has an id of \verb+fan_1+ and \verb+light.bedroom_led+ is a light with an id of bedroom\_led. The entity id can be changed if desired, but it has to be unique throughout the Home Assistant environment. And finally, each entity has a "name", which is used as a display name and is displayed on dashboards, can be referrered to in the voice assistant, etc. Besides a name and id, an icon and labels can also be specified, as shown on \refstruc{fig:HAentityCustomization}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=110mm, keepaspectratio]{figures/homeassistant_helpers.png}
+  \caption{Home Assistant helpers used in the project}
+  \label{fig:HAhelpers}
+\end{figure}
+
+Helpers are software tools to add or change functionality of different entities. For example, the states of multiple devices can be combined to a single value (eg. to calculate the average temperature in the house), change the type of a switch to a different device (eg. togglable binary light, fan, lock) or combine multiple entities to a single entity with the usage of the group feature. On \refstruc{fig:HAhelpers}, the helpers used in the project are shown.
 
 \subsubsection{Dashboard customization}
 
-dashboard
+default dashboard shows devices, but everything in it
+
+in a typical home env would be more devices, but here one provides almost everything
+
+therefore different functions should be separated eg leds, fans, heating, etc.
+
+masonry / default ? 
+
+tabs for different views
+
+screenshots
+
+area?
 
 \subsection{Smartphone setup}
 
@@ -200,4 +228,6 @@ TODO eg. car charging led
 
 \subsection{Voice assistant}
 
-addons
+addon conf
+
+screenshot
