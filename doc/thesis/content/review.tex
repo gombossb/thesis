@@ -1,35 +1,45 @@
-\chapter{Review} % , summary?
+\chapter{Review}
 
-todo
+This chapter mainly focuses on the box model's evalution to the requirements specified during the planning phase, shortcomings, how these could potentially be overcome and finally, opportunities of further development.
 
 \section{Usage}
 
-experience: when components are toggled, values are altered, changes propagate really fast to the box model
+During usage, controlling the model box's components via the user interface is quite impressive, as when components are toggled and values are altered from a laptop or smartphone, the changes made propagate really fast to the model, in a few seconds at most. Besides control, monitoring of the implemented sensors is also reliable, as when influenced externally eg. with more or less heat, light, the change can be seen in the readings of sensors. These values, along with other metrics, actions taken by the user are logged and this history can be reviewed later, or even be plotted to a graph in case of quantifiable amounts between certain time ranges.
 
-view history, graphs
+% todo screenshot of temp/brightness graph
 
-use cases
+The use cases of the model include the most important aspects of a typical smart home environment: monitoring of temperature and light levels, control of basic utilities in the form of heating and cooling, and lastly, a "smartified" rolling shutter (that would be actuated by hand in a conventional home).
 
 \section{Critical analysis, shortcomings}
 
+The experience of using the model box and its user interface is really similar to what a deployed home environment would be, therefore an adequate way to simulate a real smart home system with limitations. The model features a full-fledged smart home software platform, which is used in many installations worldwide. 
+
+main differences to a proper home environment
+xyz not added due to the limited scope of the project
 limitations of the model
 
 more devices, especially microcontrollers - would have been more expensive, but might be reasonable in a home environment
 
 why self hosted better than having it in the cloud - but needs it sysadm knowledge, ups
 
+requires dev laptop - can be substituted with rpi, server computer...
+
 security vulnerabilities
 
-vendor lock-in
-
-why matter good
+vendor lock-in - not in this project, but changing platforms can be time consuming
 
 \section{Opportunities of further development}
 
-set it up in a real house, turn it into a business
+more automations, devices
+
+set it up in a real house
+
+add energy, security systems
 
 use z-wave, zigbee, matter devices
 
 develop software, hardware for it as a business
 
 protocol development, iot opportunities
+
+business potential
