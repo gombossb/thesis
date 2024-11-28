@@ -228,8 +228,8 @@ Multiple dashboards can be created in Home Assistant to control and show differe
   \label{fig:HAcustomDashboard}
 \end{figure}
 
-On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added two sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" section.
-% maybe area?
+On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added two sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" section. The Car Charging section mimicks electric car charging with solar panels (the value of the LDR): the set brightness of the automated LED is used as the value for display, click events were disabled to make it read-only (from this dashboard).
+% maybe areas, labels, zones(osm)?
 
 A masonry type view was also added to the dashboard, which is shown on \refstruc{fig:HAmasonryDashboard}. When multiple views are present for a dashboard, a tab strip is shown to select between them, as shown on the screenshot. On the masonry view, added cards are sorted in columns based on their size, three equal sized historical graphs were added of the room temperatures.
 
@@ -248,7 +248,28 @@ Contrary to expectations, simultaneous use of the the Internet-less Wi-Fi networ
 
 \subsection{Automations}
 
-TODO eg. car charging led
+To make the life of its users easier and more comfortable, Home Assistant offers automations to run specific tasks. An automation comprises of three parts: triggers (when it runs), conditions (optional, only run if these conditions are met) and actions (what actions to perform). \cite{HAAutomationBasics} Besides basic automations, there are further features closely related to them: scenes can be used to set a group of entities to a specified state, scripts can contain multiple actions and blueprints can be used to specify a generic automation framework, which can be used as a common basis for multiple automations with exactly specified entities.
+
+During Project Laboratory, one feature that the model box had is the ability to show "solar power" by changing the brightness of the LED put inside a toy car based on the readings of the LDR. This was possible to replicate in Home Assistant too, with the use of an automation. Two kinds of triggers were tried for detecting when the automation should run: the first was using "Brightness Sensor voltage change", however even with a very small duration specified (1-5 seconds) between 0 \% and 100\% set as the voltage percent range, the automation wasn't triggered frequently enough, only about once a minute. Therefore an other trigger was used: a periodic interval of 5 seconds, which works reliably and is shown on \refstruc{fig:HAautomationTrigger}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=110mm, keepaspectratio]{figures/homeassistant_automation_trigger.png}
+  \caption{Home Assistant automation trigger}
+  \label{fig:HAautomationTrigger}
+\end{figure}
+
+The action needed to accomplish a simple task: set the brightness value of the car charging LED, based on the reading of the LDR. This was possible to be defined via the YAML editor, also shown in \refstruc{lst:HAautomationAction}, as the visual editor would have only allowed a constant number to be set as brightness. For action, light.turn\_on was specified, that turns on the specified target light entity (which is light.car\_carging\_led, if it isn't on already) and a brightness\_pct data key is also specified, which tells light.turn\_on what the target light's brightness should be. This key is defined from the value of a template: states() retrieves the value of the LDR reading, which is in the form of an integer between 0 and 100.% todo write about {{ }}
+
+\begin{lstlisting}[language=,caption=Home Assistant automation action for setting LED brightness based on LDR,label=lst:HAautomationAction]
+action: light.turn_on
+metadata: {}
+data:
+  brightness_pct: "{{ states('sensor.brightness_sensor') }}"
+target:
+  entity_id: light.car_carging_led  
+\end{lstlisting}
+% maybe auto slider
 
 \subsection{Voice assistant}
 
