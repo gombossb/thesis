@@ -6,7 +6,12 @@ This chapter mainly focuses on the box model's evalution to the requirements spe
 
 During usage, controlling the model box's components via the user interface is quite impressive, as when components are toggled and values are altered from a laptop or smartphone, the changes made propagate really fast to the model, in a few seconds at most. Besides control, monitoring of the implemented sensors is also reliable, as when influenced externally eg. with more or less heat, light, the change can be seen in the readings of sensors. These values, along with other metrics, actions taken by the user are logged and this history can be reviewed later, or even be plotted to a graph in case of quantifiable amounts between certain time ranges.
 
-% todo screenshot of temp/brightness graph
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=110mm, keepaspectratio]{figures/homeassistant_graph_history.png}
+    \caption{Home Assistant history graph for the LDR (in a dark environment, the outstanding values show when a flashlight was shined upon it)}
+    \label{fig:HAgraphHistory}
+  \end{figure}
 
 The use cases of the model include the most important aspects of a typical smart home environment: monitoring of temperature and light levels, control of basic utilities in the form of heating and cooling, and lastly, a "smartified" rolling shutter (that would be actuated by hand in a conventional home).
 
@@ -22,20 +27,14 @@ The smart home platform, its network communication medium and connected devices,
 
 A smart home platform should also have adequate security measures, as its security is only as strong as it's weakest link. The demo box uses a separated Wi-Fi network with a decent pre-shared-key (password) and encryption (WPA2), and the control server is only accessible from this Wi-Fi network or the development laptop and requires authentication with custom credentials set. It is not accessible from the Internet (it is behind Network Address Translation), but a typical environment would be set up for access, therefore security is even more important in that case. If such systems are hacked into, it can have varying negative consequences to their owners: starting from toggling and changing values of appliances, gatewaying into the home network via a compromised device to find additional vulnerabilities, to theft of data and spying in the form of video or audio means (if a camera or voice assistant system is installed). Therefore it is crucial to ensure security, software updates should be installed regularly (and these shouldn't introduce other vulnerabilities or bugs, as it sometimes happens by some irresponsible manufacturers).
 
-The model box's hardware doesn't suffer from vendor lock-in, as it often is in case of many commercial smart home solutions. The platform is modular, parts can be substituted, added and further developed thanks to its open-source property. However, changing the software platforms can be tedious and time-consuming, as the environments need to be set up again and customized to the specific needs and can take between hours to days in a typical home installation.
+The model box's hardware doesn't suffer from vendor lock-in, as it often is in case of many commercial smart home solutions. The platform is modular, parts can be substituted, added and further developed thanks to its open-source nature. However, changing the software platforms can be tedious and time-consuming, as the environments need to be set up again and customized to the specific needs of the users and environment, and can take between hours to days in a typical home installation.
 
 \section{Opportunities of further development}
 
-more automations, devices
+The model can be further developed in its current hardware form with additional software features, eg. with an automatic thermostat set to a target temperature and dashboard improvements. With additional hardware components, the currently missing subsystems (eg. security with card readers, RFID cards and energy monitoring with a power meter for electricity and its continuous logging) can be added, however this might require the utilization of a second microcontroller (which ideally should have the same microcontroller architecture). 
 
-set it up in a real house
+An even larger leap for the project would be for it to be deployed in a real house in a more production-grade environment. The controller software should be installed on an always-on computer, server or microcomputer (eg. Raspberry Pi). It should be connected to an uninterrupted power supply (UPS) for less downtime during power outages. The devices utilized would be larger, higher power specialized appliances with a hardware platform capable for controlling electricals, communicating to the control server and firmware with integrations to the specific smart home platform, optionally changeable to an open-source variant.
 
-add energy, security systems
+Newer, more efficient IoT communication protocols and devices can be also tried out and added to the system, such as Z-Wave, Zigbee and Matter. They can achieve less power consumption, less crowding of the ISM bands (as many Wi-Fi, Bluetooth devices tend to overload the 2.4 GHz band), mesh networking to achieve better range and more compatibility between devices from different manufacturers.
 
-use z-wave, zigbee, matter devices
-
-develop software, hardware for it as a business
-
-protocol development, iot opportunities
-
-business potential
+Besides trying out new protocols and technologies utilizing them, there is also need for the development these software and hardware solutions in the field of IoT and home automation. The demand for such solutions is steadily increasing, therefore the development and operation of these solutions can be a profitable business idea.
