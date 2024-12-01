@@ -1,5 +1,5 @@
 % !TeX root = thesis.tex
-% !TeX spellcheck = hu_HU
+% !TeX spellcheck = en_US
 % !TeX encoding = UTF-8
 % !TeX program = xelatex
 % TODO Change language to en_GB (recommended) or en_US for English documents
@@ -8,7 +8,6 @@
 
 \input{include/packages}
 
-%TODO Set the main variables
 \newcommand{\vikszerzoVezeteknev}{Gombos}
 \newcommand{\vikszerzoKeresztnev}{Sándor Bence}
 
@@ -33,7 +32,6 @@
 \newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev} % egy szerző esetén
 %\newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev, \tdkszerzoB} % két szerző esetén
 
-%TODO Language configuration -- choose one
 % Beállítások magyar nyelvű dolgozathoz
 %\input{include/thesis-hu}
 % Settings for English documents
@@ -63,7 +61,6 @@
 
 \selectthesislanguage
 
-%TODO Titlepage -- choose one from below
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \include{include/titlepage}		   % Szakdolgozat/Diplomaterv címlap
 %\include{include/titlepage-tdk}	% TDK címlap
@@ -77,15 +74,14 @@
 
 % Declaration and Abstract
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\include{include/declaration} %TODO Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
-\include{content/abstract}    %TODO Összefoglaló -- TDK és OTDK esetén nem kötelező
+\include{include/declaration}
+\include{content/abstract}
 
 
 % The main part of the thesis
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \pagenumbering{arabic}
 
-%TODO import your own content
 \include{content/introduction}
 % \include{content/latex-tools}
 % \include{content/thesis-format}
