@@ -130,14 +130,12 @@ wifi:
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=150mm, keepaspectratio]{figures/homeassistant_esphome_int.png}
+  \includegraphics[width=140mm, keepaspectratio]{figures/homeassistant_esphome_int.png}
   \caption{ESPHome integration for Home Assistant set up}
   \label{fig:HAesphomeint}
 \end{figure}
 
 After successfully flashing the compiled firmware to the microcontroller, it can then be added to the Home Assistant environment with an "integration". Integration is a term in Home Assistant's ecosystem to connect and integrate other software and hardware platforms, in our case ESPHome to the Home Assistant environment as a device. \cite{HAConceptsTerminology}
-
-ESPHome supports many types of electronic components connected to the microcontroller's pins (as the project's homepage shows), with a relatively easy configuration. \cite{ESPHomeHomepage} To set devices up to be utilized by ESPHome, their configuration has to be defined in the YAML configuration file, as shown in listing \ref{lst:ESPHomeDevConf} for a switch, that toggles an LED. Each device should have an \verb+id+ and \verb+name+ set, along with platform specific details, such as the GPIO pin number and mode (input / output).
 
 \begin{lstlisting}[language=,caption=ESPHome configuration for a simple LED switch,label=lst:ESPHomeDevConf]
 switch:
@@ -149,6 +147,8 @@ switch:
   name: "BedroomLED"
   restore_mode: ALWAYS_OFF
 \end{lstlisting}
+
+ESPHome supports many types of electronic components connected to the microcontroller's pins (as the project's homepage shows), with a relatively easy configuration. \cite{ESPHomeHomepage} To set devices up to be utilized by ESPHome, their configuration has to be defined in the YAML configuration file, as shown in listing \ref{lst:ESPHomeDevConf} for a switch, that toggles an LED. Each device should have an \verb+id+ and \verb+name+ set, along with platform specific details, such as the GPIO pin number and mode (input / output).
 
 This configuration was also done iteratively to the other connected components as well, but in separate files with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability. \cite{ESPHomePackages} With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation, as if they were written in that single one.
 
