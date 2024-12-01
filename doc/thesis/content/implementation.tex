@@ -88,7 +88,7 @@ Even though only one container is defined in the compose file, it still shows Co
 docker compose up
 \end{lstlisting}
 
-This setup in the Docker environment functioned properly, however had one limitation: HomeAssistant add-ons aren't supported in the container variant, only in the Home Assistant Operating System (HA OS) or the Supervised installation (installed on top of a Linux installation) variants. A voice assistant was a sought after feature in the project, therefore it was migrated to the HA OS variant, run inside a virtual machine, or VM.
+This setup in the Docker environment functioned properly, however had one limitation: HomeAssistant add-ons aren't supported in the container variant, only in the Home Assistant Operating System (HA OS) or the Supervised installation (installed on top of a Linux installation) variants. \cite{HAaddons} A voice assistant was a sought after feature in the project, therefore it was migrated to the HA OS variant, run inside a virtual machine, or VM.
 
 Virtual machine hypervisors allow physical, or host computer resources to be shared to multiple virtual machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clusterized servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
 
@@ -150,7 +150,7 @@ switch:
   restore_mode: ALWAYS_OFF
 \end{lstlisting}
 
-This configuration was also done iteratively to the other connected components as well, but in separate files with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability. With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation, as if they were written in that single one.
+This configuration was also done iteratively to the other connected components as well, but in separate files with the use of packages, which is a functionality provided by ESPHome for better code structuring and maintainability. \cite{ESPHomePackages} With packages, ESPHome configurations are merged from multiple YAML files to a single one during compilation, as if they were written in that single one.
 
 \begin{lstlisting}[language=,caption=ESPHome package includes in the main configuration file,label=lst:ESPHomePackageIncludes]
 packages:
