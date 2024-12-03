@@ -270,8 +270,7 @@ data:
 target:
   entity_id: light.car_carging_led  
 \end{lstlisting}
-\break
-
+\newpage
 \subsection{Voice assistant}
 
 As a prerequisite for the locally hosted voice assistant, the Home Assistant Docker environment was migrated to HA OS running in a VM, explained with more details in chapter 3.4.1. To set up the voice assistant environment, the installation guide was followed to set up the Piper (text-to-speech) and Whisper (speech-to-text) add-ons. \cite{HALocalAssist} The add-ons were configured to use a low quality speech detection and synthetization, in order to ensure fast response, as even with medium, the response time dramatically increased after pronouncing the commands. A screenshot of the assistant can be seen on \refstruc{fig:HAandroidVoiceAssistant}. The speech detection and synthetization supports many languages to be configured: English (UK, US), German and Hungarian were tried and out of these, English had the best accuracy of understanding and executing the said commands. Although it is impressive, it only works with simple commands, when exact device names are specified and doesn't reach the level of Artificial Intelligence based chatbots, that gained a rapid technology boom in the last few years.

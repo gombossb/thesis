@@ -2,5 +2,5 @@
 
 ## TODO
 - auto shutter, or togglable from the interface?
-- thermostat for fans/peltier
+- thermostat for fans/peltier?
 - simulated time with adjustable speed?
