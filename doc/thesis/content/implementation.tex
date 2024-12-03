@@ -2,12 +2,12 @@
 
 The implementation of the box model, according to the plans discussed in the previous chapter, mostly went without issues and was able to be put into practice. This chapter presents the steps of implementation taken in detail.
 
-\section{Floorplan}
+\section{Floor plan}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[page=1,keepaspectratio,width=110mm]{figures/box_floorplan.drawio.pdf}
-    \caption{Floorplan of the finished box model}
+    \caption{Floor plan of the finished box model}
     \label{fig:BoxFloorplan}
 \end{figure}
 
@@ -42,7 +42,7 @@ The microcontroller's number of pins and their functionalities were adequate the
 
 \section{Network setup}
 
-The Wi-Fi communication medium was set up using a TP-Link WR841N combined network device, targeted for small or home office use. Such devices almost always feature a web-based user interface for their setup and configuration. This was used to flash DD-WRT on it, which is an open-source Linux-based router firmware targeting a variety of Wi-Fi routers and embedded systems. \cite{DDWRTHomepage} It was then set up to mimick a typical home environment, with an SSID of esp\_smart\_home, WPA2-PSK authentication, without internet connectivity and without NAT (Network Address Translation, by setting the operation mode from gateway to router). The IP address range remained the default 192.168.1.0/24 and the router's IP also remained the initial 192.168.1.1, due to it not colliding with other networks actively used on the laptop and smartphone.
+The Wi-Fi communication medium was set up using a TP-Link WR841N combined network device, targeted for small or home office use. Such devices almost always feature a web-based user interface for their setup and configuration. This was used to flash DD-WRT on it, which is an open-source Linux-based router firmware targeting a variety of Wi-Fi routers and embedded systems. \cite{DDWRTHomepage} It was then set up to mimic a typical home environment, with an SSID of esp\_smart\_home, WPA2-PSK authentication, without internet connectivity and without NAT (Network Address Translation, by setting the operation mode from gateway to router). The IP address range remained the default 192.168.1.0/24 and the router's IP also remained the initial 192.168.1.1, due to it not colliding with other networks actively used on the laptop and smartphone.
 
 An extra Realtek chip based USB Wi-Fi adapter at hand was used for connecting the laptop to the Wi-Fi network, with a custom network profile configuration. Initially, the use of this adapter was done with a network profile limited to the specific network adapter and manual IP configuration was used instead of DHCP to ensure a fixed IP address of 192.168.1.100 and no default gateway learned from this network. Later, it was passed through as a USB device to a virtual machine (VM) with the same Wi-Fi and IP configuration. The Android-based smartphone used for the project was also connected to this network, but didn't have internet connection despite having an Internet-capable SIM card put into it meant as a fallback connection, according to the gained experience.
 
@@ -50,7 +50,7 @@ An extra Realtek chip based USB Wi-Fi adapter at hand was used for connecting th
 
 The chosen software environment discussed in the planning phase was suitable for the usage of obtained hardware, this section showcases the steps taken for its software setup. The personal laptop used for development had a Linux distribution installed, the smartphone used for testing ran Android 14.
 
-\subsection{HomeAssistant initial setup, migration}
+\subsection{Home Assistant initial setup, migration}
 
 Initially, Home Assistant was set up in a Docker container environment running on the laptop, with a Docker Compose file specifying the parameters for the container. Docker Engine is a container runtime engine, that makes it possible to run prepackaged container images utilizing the host machine's kernel with minimal overhead and adequate isolation. \cite{DockerContainer} The container images contain a Linux operating system's system libraries, executables and the application itself, therefore provide an easily reproducible, uniform runtime environment despite the differences in various systems. By itself, Docker has a command line interface to run and manage its containers, which means it has to be parameterized from the command line, or put into a script in its parameterized form and executed. Docker Compose is a solution for defining and running multiple Docker containers using an easy-to-manage definition, put into a YAML file. \cite{DockerCompose} YAML is a human-friendly data serialization language with a really simple syntax, as shown in listing \ref{lst:YAMLexample}. \cite{YAMLHomepage}
 
@@ -88,9 +88,9 @@ Even though only one container is defined in the compose file, it still shows Co
 docker compose up
 \end{lstlisting}
 
-This setup in the Docker environment functioned properly, however had one limitation: HomeAssistant add-ons aren't supported in the container variant, only in the Home Assistant Operating System (HA OS) or the Supervised installation (installed on top of a Linux installation) variants. \cite{HAaddons} A voice assistant was a sought after feature in the project, therefore it was migrated to the HA OS variant, run inside a virtual machine, or VM.
+This setup in the Docker environment functioned properly, however had one limitation: Home Assistant add-ons aren't supported in the container variant, only in the Home Assistant Operating System (HA OS) or the Supervised installation (installed on top of a Linux installation) variants. \cite{HAaddons} A voice assistant was a sought after feature in the project, therefore it was migrated to the HA OS variant, run inside a virtual machine, or VM.
 
-Virtual machine hypervisors allow physical, or host computer resources to be shared to multiple virtual machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clusterized servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
+Virtual machine hypervisors allow physical, or host computer resources to be shared to multiple virtual machines, or guest machines. \cite{VMwareVM} Each virtual machine can run it's own separately with its own amount of CPU cores, RAM, storage and other kinds of resources. Virtual Machines are widely used today in IT infrastructures, as the technology makes it easier to create heterogeneous software environments and can offer less downtime with clustered servers. The most popular current virtualization solutions include VMware products, Oracle VirtualBox and Proxmox. \cite{G2freeVM}
 
 \begin{figure}[!ht]
   \centering
@@ -193,7 +193,7 @@ One component connected to the microcontroller was harder to be configured for u
   \label{fig:HAentityCustomization}
 \end{figure}
 
-Customizations can be applied on Home Assistant entities to better suit the user's needs. Each entity has a unique id, which is used as a basis to uniquely identify a specific entity and it is guaranteed to be static and never changes. \cite{HAFAQUniqueID} When present, it gets assigned an entity id, which is in the form of \verb+<domain>.<id>+ and is used as a logical identifier in dashboards, automations and others. \cite{HAEntitiesDomains} To give examples, \verb+fan.fan_1+ is in the \verb+fan+ domain, therefore can be controlled as a fan, has an id of \verb+fan_1+ and \verb+light.bedroom_led+ is a light with an id of \verb+bedroom_led+. The entity id can be changed if desired, but it has to be unique throughout the Home Assistant environment. And finally, each entity has a \verb+name+, which is used as a display name and is displayed on dashboards, can be referrered to in the voice assistant, etc. Besides a name and id, an icon and labels can also be specified, as shown on \refstruc{fig:HAentityCustomization}.
+Customizations can be applied on Home Assistant entities to better suit the user's needs. Each entity has a unique id, which is used as a basis to uniquely identify a specific entity and it is guaranteed to be static and never changes. \cite{HAFAQUniqueID} When present, it gets assigned an entity id, which is in the form of \verb+<domain>.<id>+ and is used as a logical identifier in dashboards, automations and others. \cite{HAEntitiesDomains} To give examples, \verb+fan.fan_1+ is in the \verb+fan+ domain, therefore can be controlled as a fan, has an id of \verb+fan_1+ and \verb+light.bedroom_led+ is a light with an id of \verb+bedroom_led+. The entity id can be changed if desired, but it has to be unique throughout the Home Assistant environment. And finally, each entity has a \verb+name+, which is used as a display name and is displayed on dashboards, can be referred to in the voice assistant, etc. Besides a name and id, an icon and labels can also be specified, as shown on \refstruc{fig:HAentityCustomization}.
 
 \begin{figure}[!ht]
   \centering
@@ -229,7 +229,7 @@ Multiple dashboards can be created in Home Assistant to control and show differe
   \label{fig:HAmasonryDashboard}
 \end{figure}
 
-On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added three sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" and "Car Charging" sections. The car charging section mimicks electric car charging with imaginary solar panels (actually based on the value of the LDR): the set brightness of the automated LED is used as the value for display, click events on the section were disabled to make it read-only (from this dashboard).
+On the default dashboard, all areas, device controls and readings, integrations are shown as a whole, which can be ideal for a typical home environment with multiple devices, but not for the project with basically a single device and its many entities. Therefore another dashboard with a sections type view was created, which is shown on \refstruc{fig:HAcustomDashboard}. Multiple sections were created for the various types of controls (eg. lights, fans) and sensors (room temperatures), which were grouped together by the types of entities. Additional extra entities were added three sections for display: the average temperature of the three rooms to the "Temperatures" section and the LDR sensor's value to the "Room Lights" and "Car Charging" sections. The car charging section mimics electric car charging with imaginary solar panels (actually based on the value of the LDR): the set brightness of the automated LED is used as the value for display, click events on the section were disabled to make it read-only (from this dashboard).
 % maybe areas, labels, zones(osm)?
 
 A masonry type view was also added to the dashboard, which is shown on \refstruc{fig:HAmasonryDashboard}. When multiple views are present for a dashboard, a tab strip is shown to select between them, as shown on the screenshot. On the masonry view, added cards are sorted in columns based on their sizes, three equal sized historical graphs were added of the room temperatures recorded.
@@ -245,7 +245,7 @@ Besides having a web-based UI, Home Assistant also has mobile applications for t
   \label{fig:HAandroidScreenshot}
 \end{figure}
 
-Contrary to expectations, simultaneous use of the the Internet-less Wi-Fi network and the phone's data-enabled SIM card for Internet connection didn't work, even if the "Mobile data always active" option was turned on in the developer settings. A message is shown when connecting to the network about it not having an Internet connection and whether the phone should stay connected to it and only upon pressing yes, can the server be reached. But at the same time, the status bar shows that LTE disappears, which can mean that the radio data connection is dropped or only the routing table is changed, but in such a way that the default gateway gets overriden to the Wi-Fi network. It would likely be possible to be able to change this behaviour with a rooted phone (where a root shell access is present), but its risks and disadvantages aren't worth it for this simple test scenario. And in a typical home network environment, where there wouldn't be a need to access two networks simultaneously, the HA OS server and the Internet would be able to be reached at the same time.
+Contrary to expectations, simultaneous use of the the Internet-less Wi-Fi network and the phone's data-enabled SIM card for Internet connection didn't work, even if the "Mobile data always active" option was turned on in the developer settings. A message is shown when connecting to the network about it not having an Internet connection and whether the phone should stay connected to it and only upon pressing yes, can the server be reached. But at the same time, the status bar shows that LTE disappears, which can mean that the radio data connection is dropped or only the routing table is changed, but in such a way that the default gateway gets overriden to the Wi-Fi network. It would likely be possible to be able to change this behavior with a rooted phone (where a root shell access is present), but its risks and disadvantages aren't worth it for this simple test scenario. And in a typical home network environment, where there wouldn't be a need to access two networks simultaneously, the HA OS server and the Internet would be able to be reached at the same time.
 
 \subsection{Automations}
 
